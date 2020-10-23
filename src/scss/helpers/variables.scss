@@ -1,0 +1,31 @@
+:root {
+  --black: #3F3D56;
+  --accent: #DC5349;
+  --lg: #EBEBEB;
+  --g-offset: 200;
+}
+
+//colors
+$black: var(--black);
+$accent: var(--accent);
+$lg: var(--lg);
+
+
+//screen config
+$maxWidth: 1920;
+$minWidth: 375;
+
+//breakpoints
+$br1: 1060px;
+$br2: 960px;
+$br3: 768px;
+$br4: 460px;
+
+//fonts
+$def-size: size(20, 16);
+
+//easings
+$easing: cubic-bezier(0.16, 1, 0.3, 1);
+
+// layouts
+$g-offset: size(200, 20);

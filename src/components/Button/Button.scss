@@ -1,0 +1,19 @@
+@import '../../scss/helpers/all.scss';
+
+.btn {
+  background-color: $accent;
+  box-shadow: 0px 18px 50px rgba(235, 87, 87, 0.35);
+  border-radius: 33px;
+  color: white;
+  padding: size(25, 16) size(74, 50) size(27, 17);
+  font-size: inherit;
+  line-height: 1em;
+  @include medium;
+  transition: box-shadow .3s ease, background-color .3s ease;
+  @include media('>=#{$br2}') {
+    &:hover {
+      box-shadow: 0px 18px 50px rgba(235, 87, 87, 0.65);
+      background-color: darken($color: #DC5349, $amount: 10%);
+    }
+  }
+}

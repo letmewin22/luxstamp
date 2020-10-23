@@ -1,0 +1,70 @@
+@import '../../scss/helpers/all.scss';
+
+.h1 {
+  font-size: size(60, 30);
+  @include medium;
+  line-height: 1.2em;
+  @include media('<=#{$br1}') {
+    margin-top: 36px;
+  }
+}
+
+.header {
+  height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
+.header__container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  @include media('<=#{$br1}') {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+
+.header__left {
+  width: 55%;
+  @include media('<=#{$br1}') {
+    width: 70%;
+  }
+  @include media('<=#{$br3}') {
+    width: 100%;
+  }
+}
+
+.header__descriptor {
+  max-width: 600px;
+  margin-top: size(32, 20);
+}
+
+.header__right {
+  width: 45%;
+  @include media('<=#{$br4}') {
+    width: 100%;
+  }
+  img {
+    float: right;
+    display: block;
+    max-width: 100%;
+    @include media('<=#{$br1}') {
+      max-width: 70%;
+      float: left;
+    }
+    @include media('<=#{$br4}') {
+      width: 100%;
+      margin: 0 auto;
+      float: none;
+      position: relative;
+      left: -20px;
+      max-width: 50%;
+    }
+  }
+}
+
+.header__btn {
+  margin-top: size(48, 32);
+}
