@@ -438,7 +438,41 @@
 
 .social__item {
   line-height: 1em;
+  transition:  color .3s ease;
+  &:hover {
+    color: $accent;
+  }
   + .social__item {
     margin-top: 14px;
+  }
+}
+
+.representations {
+  max-width: size(431, 335);
+}
+
+.footer__btn {
+  height: fit-content;
+}
+
+.representations__items {
+  margin-top: size(24, 16);
+}
+
+.representations__li {
+  display: flex;
+  + .representations__li {
+    margin-top: size(32, 20);
+  }
+}
+
+.representation__li-text {
+  margin-left: size(12, 8);
+  span {
+    display: block;
+    transition:  color .3s ease;
+    &:hover {
+      color: $accent;
+    }
   }
 }
