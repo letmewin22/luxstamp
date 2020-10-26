@@ -18,4 +18,50 @@ code {
 
 .container {
   padding: 0 $g-offset;
+  position: relative;
+}
+
+.section__container {
+  padding-top: size(200, 100);
+  height: 100%;
+  &.last {
+    padding-bottom: size(200, 100);
+  }
+}
+
+.h2, h3, h4, h5 {
+  line-height: 1.2em;
+  @include medium;
+}
+
+.h2 {
+  font-size: size(60, 30);
+}
+
+.h3 {
+  font-size: size(28, 20);
+}
+
+.h4 {
+  font-size: size(42, 30);
+}
+
+.h5 {
+  font-size: size(36, 20);
+}
+
+.h6 {
+  @include reg;
+  font-size: size(24, 18);
+}
+
+.mob-hidden {
+  @include media('<=#{$br2}') {
+    display: none;
+  }
+}
+
+.dg {
+  background-color: #E4E0E0;
+  margin-top: size(200, 100);
 }

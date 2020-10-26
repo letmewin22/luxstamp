@@ -1,7 +1,7 @@
 import React from 'react'
 import './Button.scss'
 
-const Button = (props) => {
+export const Button = (props) => {
   const classes = ['btn']
 
   classes.push(props.classes)
@@ -12,5 +12,4 @@ const Button = (props) => {
   )
 }
 
-export default Button
 

@@ -1,45 +1,56 @@
 import React, {useState, useEffect} from 'react'
-import img from '../../img/1screen.png'
-import Button from '../Button/Button'
+
+import {Navbar} from '../Navbar/Navbar'
+import { Header } from './Header'
+import { Instruction } from './sections/Instruction'
+import { Order } from './sections/Order'
+import { Advantages } from './sections/Advantages'
+import { WhyWe } from './sections/Whywe'
+import { Clients } from './sections/Clients'
+import { Reviews } from './sections/Reviews'
+import { Delivery } from './sections/Delivery'
+import { CallToAction } from './sections/CallToAction'
+import { Footer } from './Footer'
+
 import './Landing.scss'
 
 const languages = {
   uk: {
     title: 'UK',
-    h1: 'Виготовимо печатку, штамп або факсиміле, доки ви п’єте каву'
+    h1: 'Виготовимо печатку, штамп або факсиміле, доки ви п’єте каву',
   },
   ru: {
     title: 'Rus',
-    h1: 'Создадим печать, штамп або факсиміле, доки ви п’єте каву'
-  }
+    h1: 'Создадим печать, штамп або факсиміле, доки ви п’єте каву',
+  },
 }
 
-
-const Landing = () => {
-
-  const [lang] = useState('uk')
+export const Landing = () => {
+  const [lang, setLang] = useState('uk')
 
   useEffect(() => {
-    const title = document.querySelector('title')
-    title.innerHTML  = languages[lang].title
+    document.title = languages[lang].title
   }, [lang])
+
+  const langSwitcher = () => {
+    lang === 'uk' ? setLang('ru') : setLang('uk')
+  }
 
   return (
     <>
-      <header  className="header">
-        <div className="container header__container">
-          <div className="header__left">
-              <h1 className="h1">{languages[lang].h1}</h1>
-              <p className="header__descriptor">Термін виготовлення — від 15 до 60 хвилин. Довічна гарантія на кліше. Доставка по місту та Україні.</p>
-              <Button classes="header__btn" text="Замовити печатку"/>
-          </div>
-          <div className="header__right">
-            <img src={img} alt="" />
-          </div>
-        </div>
-      </header>
+      <Navbar langSwitcher={langSwitcher} />
+      <Header lang={languages[lang]}/>
+      <main>
+        <Instruction/>
+        <Order/>
+        <Advantages/>
+        <WhyWe/>
+        <Clients/>
+        <Reviews/>
+        <Delivery/>
+        <CallToAction/>
+        <Footer/>
+      </main>
     </>
   )
 }
-
-export default Landing
