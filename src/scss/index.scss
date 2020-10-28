@@ -9,6 +9,14 @@ body {
   line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  &.e-fixed {
+    padding-right: var(--offset);
+    overflow: hidden;
+    .navbar {
+      padding-right: var(--offset);
+
+    }
+  }
 }
 
 code {
@@ -22,10 +30,10 @@ code {
 }
 
 .section__container {
-  padding-top: size(200, 100);
+  padding-top: size(200, 72);
   height: 100%;
   &.last {
-    padding-bottom: size(200, 100);
+    padding-bottom: size(200, 72);
   }
 }
 
@@ -56,12 +64,12 @@ code {
 }
 
 .mob-hidden {
-  @include media('<=#{$br2}') {
+  @include media('<=#{$br1}') {
     display: none;
   }
 }
 
 .dg {
   background-color: #E4E0E0;
-  margin-top: size(200, 100);
+  margin-top: size(200, 72);
 }

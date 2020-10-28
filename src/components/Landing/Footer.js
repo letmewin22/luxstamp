@@ -3,7 +3,6 @@ import {Logo} from '../Logo'
 import {Button} from '../Button/Button'
 
 export const Footer = () => {
-
   const representations = [
     {
       address: 'Івано-Франківськ, пл. Ринок 14 (3 поверх)',
@@ -22,7 +21,7 @@ export const Footer = () => {
       googleMaps: '/',
       phone: '+38 (068) 271-77-78',
       email: 'luxstampif@gmail.com',
-    }
+    },
   ]
 
   return (
@@ -69,9 +68,19 @@ export const Footer = () => {
         </div>
         <div className='footer__bottom'>
           <div className='footer__bottom-line' />
-          <span className='footer__bottom-copywrite'>
-            ©2020 Luxstamp. Усі права захищено
-          </span>
+          <div className='footer__bottom-content'>
+            <span className='footer__bottom-copywrite'>
+              ©2020 Luxstamp. Усі права захищено
+            </span>
+            <a 
+            href='https://emotion-agency.com' 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className='footer__made-by'
+            >
+              by emotion
+            </a>
+          </div>
         </div>
       </div>
     </footer>

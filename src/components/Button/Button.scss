@@ -9,6 +9,8 @@
   font-size: inherit;
   line-height: 1em;
   @include medium;
+  display: block;
+  max-width: fit-content;
   transition: box-shadow .3s ease, background-color .3s ease;
   @include media('>=#{$br2}') {
     &:hover {

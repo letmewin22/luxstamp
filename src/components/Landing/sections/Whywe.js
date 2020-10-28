@@ -45,7 +45,7 @@ export const WhyWe = () => {
                 </div>
 
                 <div className='why-we__li-right'>
-                  <div className='section__line' />
+                  <div className='section__line mob-hidden' />
                   <p className='why-we__text'>{item.text}</p>
                 </div>
               </li>

@@ -34,7 +34,7 @@ export const Delivery = () => {
   ]
 
   return (
-    <section className='section delivery'>
+    <section id="delivery" className='section delivery'>
       <div className='container section__container'>
         <div className='section__line mob-hidden' />
         <h2 className='h2 delivery__h2'>Оплата та доставка</h2>
@@ -51,7 +51,7 @@ export const Delivery = () => {
                   {item.items.map((el) => {
                     return (
                       <div key={el.text} className='delivery__li-item'>
-                        <div className='section__line' />
+                        <div className='section__line mob-hidden' />
                         {el.h && <h3 className='h3 delivery__h3'>{el.h}</h3>} 
                         <p className='delivery__text'>{el.text}</p>
                       </div>

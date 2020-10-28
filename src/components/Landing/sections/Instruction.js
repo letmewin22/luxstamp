@@ -91,7 +91,7 @@ export const Instruction = () => {
             })}
           </ul>
         </div>
-        <div className='instruction__right'>
+        <div className='instruction__right instruction__right--big-m'>
           <div className='section__line' />
           <h4 className='h4 instruction__h4'>Замовлення в офісі</h4>
           <p className='instruction__text'>4 кроки до готового виробу:</p>

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useResize } from '../../../hooks/Resizer'
 
 import img1 from '../../../img/clients/1.png'
 import img2 from '../../../img/clients/2.png'
@@ -20,15 +21,23 @@ export const Clients = () => {
     {img: img7}
   ]
 
+  const [isMobile, setIsMobile] = useState(false)
+
+  useResize(() => {
+    window.innerWidth < 1302 ? setIsMobile(true) : setIsMobile(false)
+  })
+
   return (
-    <section className='section clients'>
+    <section id="clients" className='section clients'>
       <div className='container section__container'>
         <h2 className='h2'>Наші клієнти</h2>
         <p className='clients-description'>
           Ми виготовляємо печатки для фізичних осіб-підприємців, компаній,
           держустанов, адвокатів, нотаріусів та лікарів.
         </p>
-        <ul className='clients__items'>
+      </div>
+      {isMobile && (<span className="clients__swipe-to">свайпайте вбік</span>)}
+      <ul className='clients__items'>
           {clients.map(client => {
             return (
               <li key={client.img} className='clients__li'>
@@ -37,7 +46,6 @@ export const Clients = () => {
             )
           })}
         </ul>
-      </div>
     </section>
   )
 }

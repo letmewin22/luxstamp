@@ -21,15 +21,15 @@ export const CallToAction = () => {
           </div>
         </div>
         <div className='dg__bottom'>
-          <div className='dg__bottom-item'>
+          <div className='dg__bottom-item dg__bottom-item--cta'>
             <div className='dg__left'>
               <div className='dg__left-content'>
-                <div className='section__line' />
+                <div className='section__line mob-hidden' />
                 <Button text="У мене є питання!" classes='call-to-action__btn'/>
               </div>
             </div>
             <div className='dg__right'>
-              <div className='section__line' />
+              <div className='section__line mob-hidden' />
               <p className='big-p call-to-action__text'>Ми розрахуємо вартість виробу, запропонуємо різні варіанти дизайну, та пригостимо смачною кавою з десертом. Якщо у вас є питання — залишайте заявку, ми зателефонуємо!</p>
             </div>
           </div>

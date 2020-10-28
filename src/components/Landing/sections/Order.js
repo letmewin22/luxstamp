@@ -6,7 +6,7 @@ import orderImg3 from '../../../img/order/3.png'
 
 export const Order = () => {
   return (
-    <section className='section order'>
+    <section id="order" className='section order'>
       <div className='container section__container order__container'>
         <h2 className='h2 order__h2'>Онлайн-замовлення</h2>
         <ul className='order__items'>

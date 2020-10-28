@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 import {Navbar} from '../Navbar/Navbar'
-import { Header } from './Header'
+import { Header } from './Header/Header'
 import { Instruction } from './sections/Instruction'
 import { Order } from './sections/Order'
 import { Advantages } from './sections/Advantages'
@@ -32,7 +32,9 @@ export const Landing = () => {
     document.title = languages[lang].title
   }, [lang])
 
-  const langSwitcher = () => {
+  const langSwitcher = (e) => {
+    const langSwitcherText = lang === 'uk' ? 'Ua' : 'Ru'
+    e.target.innerText = langSwitcherText
     lang === 'uk' ? setLang('ru') : setLang('uk')
   }
 

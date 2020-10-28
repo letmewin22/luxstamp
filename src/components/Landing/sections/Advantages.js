@@ -27,7 +27,7 @@ export const Advantages = () => {
   ]
 
   return (
-    <section className='section advantages dg'>
+    <section id="advantages" className='section advantages dg'>
       <div className='container section__container dg__container'>
         <div className='section__line mob-hidden' />
         <div className='dg__top'>
@@ -59,7 +59,7 @@ export const Advantages = () => {
                   </div>
                 </div>
                 <div className='dg__right'>
-                  <div className='section__line' />
+                  <div className='section__line mob-hidden' />
                   <p className='big-p'>{advantage.text}</p>
                 </div>
               </div>
