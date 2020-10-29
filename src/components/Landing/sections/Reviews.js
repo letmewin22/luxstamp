@@ -1,24 +1,14 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useContext} from 'react'
 import gsap from 'gsap'
 import arrow0 from '../../../img/arrow0.svg'
 import {SliderArrow} from '../../SliderArrow'
+import TextContext from '../../../context/TextContext'
 
-export const Reviews = () => {
+export const Reviews = (props) => {
 
-  const reviews = [
-    {
-      review: `Все дуже сподобалось адже тут вам запропонують не лише смачну каву але розроблять стильний дизант печатки а швиткість виготовлення взагалі вражає поки я допила каву все вже було готово. Рекомендую!`,
-      name: 'Христина Рошка',
-    },
-    {
-      review: 'Обслуживание и качество на высшем уровне! Рекомендую всем!',
-      name: 'Любов Калинюк',
-    },
-    {
-      review: `Реально очень ответственные и дружелюбные люди с такими людьми хотят заниматься бизнесом, довольна и рекомендую людям все наверху и в работе проделанной чуть больше часа уже было готово и выбор в печатях есть разные дорогой уже вкус от шаблона с разной степенью защиты и до самого выбора тюленя, которую я выбрала по рекомендации и интересовалась, как новый принт японского производства понравился больше мужской такой железный маленький и удобный в транспортировке, когда нужно с себя и ещё очень крутая сумочка к этому, продолжу писать только с ним и буду советовать людей, благодарить и удачи в работе`,
-      name: 'Владимир Визнович',
-    },
-  ]
+  const reviews = props.resource.reviews.read().data
+
+  const {clientsReviews} = useContext(TextContext)
 
   const max = reviews.length - 1
 
@@ -55,12 +45,12 @@ export const Reviews = () => {
         <div className='dg__top'>
           <div className='dg__left'>
             <p className='dg__top-text'>
-              Подивіться, що про нас кажуть постійні клієнти:
+              {clientsReviews.descriptor}
             </p>
           </div>
           <div className='dg__right'>
             <div className='dg__right-content'>
-              <h2 className='h2 dg__h2'>Відгуки клієнтів</h2>
+              <h2 className='h2 dg__h2'>{clientsReviews.title}</h2>
               <img src={arrow0} alt='arrow' />
             </div>
           </div>
@@ -90,7 +80,7 @@ export const Reviews = () => {
                   target='_blank'
                   rel='noopener noreferrer'
                 >
-                  дивитись у facebook
+                  {clientsReviews.button.toLowerCase()}
                 </a>
               </div>
             </div>

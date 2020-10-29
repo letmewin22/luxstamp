@@ -1,28 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Logo} from '../Logo'
 import {Button} from '../Button/Button'
+import TextContext from '../../context/TextContext'
 
 export const Footer = () => {
-  const representations = [
-    {
-      address: 'Івано-Франківськ, пл. Ринок 14 (3 поверх)',
-      googleMaps: '/',
-      phone: '+38 (068) 271-77-78',
-      email: 'luxstampif@gmail.com',
-    },
-    {
-      address: 'Новоград-Волинський, пл. Ринок 14 (3 поверх)',
-      googleMaps: '/',
-      phone: '+38 (068) 271-77-78',
-      email: 'luxstampif@gmail.com',
-    },
-    {
-      address: 'Бахмач, пл. Ринок 14 (3 поверх)',
-      googleMaps: '/',
-      phone: '+38 (068) 271-77-78',
-      email: 'luxstampif@gmail.com',
-    },
-  ]
+
+  const {footer} = useContext(TextContext)
 
   return (
     <footer className='footer'>
@@ -30,9 +13,9 @@ export const Footer = () => {
         <div className='footer__content'>
           <Logo />
           <div className='representations'>
-            <h6 className='h6 representations-h6'>Представництва</h6>
+            <h6 className='h6 representations-h6'>{footer.representationsText}</h6>
             <ul className='representations__items'>
-              {representations.map((el, i) => {
+              {footer.representations.map((el, i) => {
                 return (
                   <li key={el.address} className='representations__li'>
                     <span className='number representations__li-number'>
@@ -64,13 +47,13 @@ export const Footer = () => {
               <a href='/'>facebook</a>
             </li>
           </ul>
-          <Button text='Зв’язатися з нами' classes='footer__btn' />
+          <Button text={footer.button} classes='footer__btn' />
         </div>
         <div className='footer__bottom'>
           <div className='footer__bottom-line' />
           <div className='footer__bottom-content'>
             <span className='footer__bottom-copywrite'>
-              ©2020 Luxstamp. Усі права захищено
+              {footer.copyright}
             </span>
             <a 
             href='https://emotion-agency.com' 

@@ -1,71 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import TextContext from '../../../context/TextContext'
 
 export const Instruction = () => {
 
-  const howItems = [
-    {
-      h: 'Для ФОП',
-      text: `Для виготовлення потрібна фотографія/скан-копія витягу з ЕДР або
-      вашого ідентифікаційного коду.`,
-    },
-    {
-      h: 'Для ТОВ',
-      text: `Для держустанов та ТОВ для виготовлення потрібна фотографія або
-      скан-копія витягу з ЕДРПОУ.`,
-    },
-    {
-      h: 'Для адвоката/лікаря',
-      text: `Для виготовлення потрібна фотографія або скан-копія свідоцтва
-      адвоката/диплома лікаря.`,
-    }
-  ]
+  const {instruction} = useContext(TextContext)
 
-  const onlineItems = [
-    {
-      text: 'Обираєте потрібний вид та дизайн печатки.',
-    },
-    {
-      text: 'Заповнюєте форму замовлення.',
-    },
-    {
-      text: 'Додаєте до форми фото або скан-копію потрібного документа.',
-    },
-    {
-      text: `Отримуєте виріб кур’єром, Новою Поштою або забираєте у нас в
-      офісі.`,
-    }
-  ]
-
-  const officeItems = [
-    {
-      text: 'Приходите до нашого офісу.',
-    },
-    {
-      text: 'Обираєте потрібний вид та дизайн печатки.',
-    },
-    {
-      text: `Додаєте потрібний документ або його фото/скан-копію, а також
-              документ що підтверджує особу.`,
-    },
-    {
-      text: 'Ви не встигнете допити каву, як ваш виріб буде готовий :)',
-    }
-  ]
+  const howItems = instruction.items
+  const onlineItems = instruction.online.items
+  const officeItems = instruction.offline.items
 
   return (
     <section className='section instruction'>
       <div className='container section__container instruction__container'>
         <div className='instruction__left'>
           <div className='section__line mob-hidden' />
-          <h2 className='h2 instruction__h2'>Як зробити замовлення?</h2>
+            <h2 className='h2 instruction__h2'>{instruction.h2}</h2>
         </div>
         <div className='instruction__right'>
           <ul className='instruction__items'>
             {howItems.map(item => {
               return (
-                <li key={item.h} className='instruction__li'>
+                <li key={item.title} className='instruction__li'>
                   <div className='section__line' />
-                  <h3 className='h3 instruction__h3'>{item.h}</h3>
+                  <h3 className='h3 instruction__h3'>{item.title}</h3>
                   <p className='instruction__text'>{item.text}</p>
                 </li>
               )
@@ -76,8 +33,8 @@ export const Instruction = () => {
       <div className='container section__container instruction__container'>
         <div className='instruction__left'>
           <div className='section__line' />
-          <h4 className='h4 instruction__h4'>Онлайн-замовлення</h4>
-          <p className='instruction__text'>4 кроки до готового виробу:</p>
+          <h4 className='h4 instruction__h4'>{instruction.online.title}</h4>
+          <p className='instruction__text'>{instruction.online.descriptor}</p>
           <ul className='instruction__steps-list'>
             {onlineItems.map((item, i) => {
               return (
@@ -93,8 +50,8 @@ export const Instruction = () => {
         </div>
         <div className='instruction__right instruction__right--big-m'>
           <div className='section__line' />
-          <h4 className='h4 instruction__h4'>Замовлення в офісі</h4>
-          <p className='instruction__text'>4 кроки до готового виробу:</p>
+          <h4 className='h4 instruction__h4'>{instruction.offline.title}</h4>
+          <p className='instruction__text'>{instruction.offline.descriptor}</p>
           <ul className='instruction__steps-list'>
             {officeItems.map((item, i) => {
               return (

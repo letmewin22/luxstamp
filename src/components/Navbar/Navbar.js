@@ -1,34 +1,38 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useContext} from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import './Navbar.scss'
 import {Logo} from '../Logo'
 import {useResize} from '../../hooks/Resizer'
+import TextContext from '../../context/TextContext'
 
 export const Navbar = (props) => {
+
+  const {navigation} = useContext(TextContext)
+
   const links = [
     {
       href: '#order',
-      text: 'Замовити онлайн',
+      text: navigation.order,
       type: 'anchor',
     },
     {
       href: '#advantages',
-      text: 'Переваги',
+      text: navigation.advantages,
       type: 'anchor',
     },
     {
       href: '#clients',
-      text: 'Наші клієнти',
+      text: navigation.clients,
       type: 'anchor',
     },
     {
       href: '#delivery',
-      text: 'Оплата та доставка',
+      text: navigation.delivery,
       type: 'anchor',
     },
     {
       href: '/',
-      text: 'Контакти',
+      text: navigation.contacts,
       type: 'link',
     },
   ]

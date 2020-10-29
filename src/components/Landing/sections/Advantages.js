@@ -1,50 +1,27 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import TextContext from '../../../context/TextContext'
 import arrow0 from '../../../img/arrow0.svg'
 
 export const Advantages = () => {
-
-  const advantages = [
-    {
-      number: '11',
-      desc: 'років',
-      text: 'виготовляємо печатки',
-    },
-    {
-      number: '3 567',
-      desc: 'клієнтів',
-      text: 'задоволені нашою роботою',
-    },
-    {
-      number: '99',
-      desc: 'років',
-      text: 'гарантія на кліше',
-    },
-    {
-      number: '23 528',
-      desc: 'відтисків',
-      text: 'зроблено нашими печатками',
-    }
-  ]
+  const {advantages} = useContext(TextContext)
 
   return (
-    <section id="advantages" className='section advantages dg'>
+    <section id='advantages' className='section advantages dg'>
       <div className='container section__container dg__container'>
         <div className='section__line mob-hidden' />
         <div className='dg__top'>
           <div className='dg__left'>
-            <p className='dg__top-text'>Трохи цифр</p>
+            <p className='dg__top-text'>{advantages.descriptor}</p>
           </div>
           <div className='dg__right'>
             <div className='dg__right-content'>
-              <h2 className='h2 dg__h2'>
-                Переваги печаток та штампів LuxStamp
-              </h2>
+              <h2 className='h2 dg__h2'>{advantages.title}</h2>
               <img src={arrow0} alt='arrow' />
             </div>
           </div>
         </div>
         <div className='dg__bottom'>
-          {advantages.map(advantage => {
+          {advantages.items.map((advantage) => {
             return (
               <div key={advantage.text} className='dg__bottom-item'>
                 <div className='dg__left'>
