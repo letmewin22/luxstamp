@@ -1,8 +1,14 @@
 import React, {useState, useRef} from 'react'
 import {Checkbox} from '../Checkbox/Checkbox'
-import img from '../../img/order/form/1.png'
-import img2 from '../../img/order/form/2.png'
-import {clamp} from '../../utils/clamp'
+import img from '@/img/order/form/1.png'
+import img2 from '@/img/order/form/2.png'
+import {clamp} from '@/utils/clamp'
+
+/**
+* @todo
+1. Нужно сделать двухстороннюю привязку экранов и чекбоксов и выводить экраны только если они есть у чекбоксов в детях
+2. Сделать русскую версию формы.
+* */
 
 export const OrderForm = () => {
   const counter = useRef(0)
@@ -37,6 +43,7 @@ export const OrderForm = () => {
         {
           id: 1,
           name: 'Нова',
+          children: ['Оберіть термін виготовлення'],
           type: 'with-img',
           img: img,
           selected: false,
@@ -81,6 +88,46 @@ export const OrderForm = () => {
       inputsCount: 4,
       unique: true,
       visible: false,
+      content: 'download-screen',
+      items: [
+        {
+          id: 1,
+          name: 'ФОП',
+          type: '',
+          img: '',
+          selected: false,
+        },
+        {
+          id: 2,
+          name: 'ТОВ',
+          type: '',
+          img: '',
+          selected: false,
+        },
+        {
+          id: 3,
+          name: 'Нотаріус/адвокат',
+          type: '',
+          img: '',
+          selected: false,
+        },
+        {
+          id: 4,
+          name: 'Лікар',
+          type: '',
+          img: '',
+          selected: false,
+        },
+      ],
+    },
+    {
+      id: 3,
+      parents: ['1 година', '1 день', 'Нова'],
+      title: 'Оберіть дизайн печатки',
+      inputsCount: 4,
+      unique: true,
+      visible: false,
+      content: 'download-screen',
       items: [
         {
           id: 1,
@@ -183,13 +230,18 @@ export const OrderForm = () => {
                       key={item.id}
                       name={item.name}
                       type={item.type}
-                      img={item.img && item.img}
+                      img={item.img}
                       selected={item.selected}
                       screenID={step.id}
                     />
                   )
                 })}
               </div>
+              {/* <div dangerouslySetInnerHTML={{ __html: step.content }} /> */}
+              {step.content && step.content === 'download-screen' && (
+                <p>*Завантажте фото або скан-копію витягу з ЕДРПОУ/свідоцтво адвоката/диплом лікаря</p>
+              )}
+                {/* {step.content} */}
             </div>
           )
         )
@@ -197,3 +249,4 @@ export const OrderForm = () => {
     </div>
   )
 }
+

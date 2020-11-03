@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import TextContext from '../../../context/TextContext'
+import TextContext from '@/context/TextContext'
 
 export const WhyWe = () => {
   const {whywe} = useContext(TextContext)

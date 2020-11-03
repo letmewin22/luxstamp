@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import {Logo} from '../Logo'
 import {Button} from '../Button/Button'
-import TextContext from '../../context/TextContext'
+import TextContext from '@/context/TextContext'
+
 
 export const Footer = () => {
 

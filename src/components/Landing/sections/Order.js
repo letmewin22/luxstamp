@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
-import TextContext from '../../../context/TextContext'
+import TextContext from '@/context/TextContext'
 import { OrderForm } from '../../OrderForm/OrderForm'
 
-import orderImg1 from '../../../img/order/1.png'
-import orderImg2 from '../../../img/order/2.png'
-import orderImg3 from '../../../img/order/3.png'
+import orderImg1 from '@/img/order/1.png'
+import orderImg2 from '@/img/order/2.png'
+import orderImg3 from '@/img/order/3.png'
 
 export const Order = () => {
   const {order} = useContext(TextContext)

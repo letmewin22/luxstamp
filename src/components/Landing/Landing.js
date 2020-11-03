@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import {useResource} from '../../resource'
-import TextContext from '../../context/TextContext'
+import {useResource} from '@/resource'
+import TextContext from '@/context/TextContext'
 
 import {Navbar} from '../Navbar/Navbar'
 import {Header} from './Header/Header'
