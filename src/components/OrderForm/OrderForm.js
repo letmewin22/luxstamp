@@ -2,6 +2,7 @@ import React, {useState, useRef} from 'react'
 import {Checkbox} from '../Checkbox/Checkbox'
 import img from '../../img/order/form/1.png'
 import img2 from '../../img/order/form/2.png'
+import {clamp} from '../../utils/clamp'
 
 export const OrderForm = () => {
   const counter = useRef(0)
@@ -26,7 +27,7 @@ export const OrderForm = () => {
 
   const [steps, setSteps] = useState([
     {
-      id: 1,
+      id: 0,
       parents: [],
       title: 'Оберіть вид виробу',
       inputsCount: 4,
@@ -37,20 +38,20 @@ export const OrderForm = () => {
           id: 1,
           name: 'Нова',
           type: 'with-img',
-          selected: false,
           img: img,
+          selected: false,
         },
         {
           id: 2,
           name: 'По відбитку',
           type: 'with-img',
-          selected: false,
           img: img2,
-        },
+          selected: false,
+        }
       ],
     },
     {
-      id: 2,
+      id: 1,
       parents: ['Нова', 'По відбитку'],
       title: 'Оберіть термін виготовлення',
       inputsCount: 4,
@@ -60,52 +61,52 @@ export const OrderForm = () => {
         {
           id: 1,
           name: '1 година',
-          type: null,
+          type: '',
           img: '',
           selected: false,
         },
         {
           id: 2,
           name: '1 день',
-          type: null,
+          type: '',
           img: '',
           selected: false,
         },
       ],
     },
     {
-      id: 3,
-      visible: false,
+      id: 2,
       parents: ['1 година', '1 день'],
       title: 'Оберіть організаційно-правову форму діяльності',
       inputsCount: 4,
       unique: true,
+      visible: false,
       items: [
         {
           id: 1,
           name: 'ФОП',
-          type: null,
+          type: '',
           img: '',
           selected: false,
         },
         {
           id: 2,
           name: 'ТОВ',
-          type: null,
+          type: '',
           img: '',
           selected: false,
         },
         {
           id: 3,
           name: 'Нотаріус/адвокат',
-          type: null,
+          type: '',
           img: '',
           selected: false,
         },
         {
           id: 4,
           name: 'Лікар',
-          type: null,
+          type: '',
           img: '',
           selected: false,
         },
@@ -113,35 +114,55 @@ export const OrderForm = () => {
     },
   ])
 
-  // const [markup, setMarkup] = useState([])
+
+  const l = steps.length
 
   const onChange = (e) => {
+
     const newArray = [...steps]
-    const l = newArray.length
+    const screenId = +e.target.dataset.screenId
+    const targetName = e.target.dataset.name
 
-    // newArray.forEach(el => el.visible = false)
+    const setSelect = () => {
+      newArray[screenId].items.forEach((item) => {
+        newArray[screenId].unique && (item.selected = false)
+        if (item.name === targetName) {
+          item.selected = item.selected ? false : true
+        }
+      })
+    }
 
-    newArray[counter.current].items.forEach((item) => {
-      newArray[counter.current].unique && (item.selected = false)
-      if (item.name === e.target.dataset.name) {
-        item.selected = true
-      }
-    })
+    const setVisible = () => {
+      newArray.forEach((step) => {
+        if (step.parents.includes(targetName)) {
+          step.visible = true
+        }
+      })
+    }
 
-    newArray.forEach((step, i) => {
-      console.log(counter.current, i);
-      if (step.parents.includes(e.target.dataset.name)) {
-        newArray[i].visible = true
-      }
-    })
-    if(counter.current < l - 1) {
+    if (counter.current > screenId) {
+
+      const toHideEls = newArray.filter(el => el.id > screenId)
+
+      toHideEls.forEach(el => {
+        el.visible = false
+        el.items.forEach(item => item.selected = false)
+      })
+      setSelect()
+      counter.current = screenId
+      setVisible()
+
+    } else {
+
+      setVisible()
+      setSelect()
+
       counter.current++
-    } 
+      counter.current = clamp(counter.current, 0, l - 1)
+    }
+
     setSteps([...newArray])
   }
-  
-  // console.log(counter.current)
-  console.log(steps)
 
   return (
     <div className='order__form-wrapper'>
@@ -164,6 +185,7 @@ export const OrderForm = () => {
                       type={item.type}
                       img={item.img && item.img}
                       selected={item.selected}
+                      screenID={step.id}
                     />
                   )
                 })}
