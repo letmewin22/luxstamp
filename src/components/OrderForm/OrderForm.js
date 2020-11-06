@@ -1,8 +1,9 @@
 import React, {useState, useRef} from 'react'
+import { data } from './OrderForm.data'
 import {Checkbox} from '../Checkbox/Checkbox'
-import img from '@/img/order/form/1.png'
-import img2 from '@/img/order/form/2.png'
+
 import {clamp} from '@/utils/clamp'
+import { DownloadIcon } from '../DownloadIcon'
 
 /**
 * @todo
@@ -12,6 +13,7 @@ import {clamp} from '@/utils/clamp'
 
 export const OrderForm = () => {
   const counter = useRef(0)
+  const exclude = useRef([])
 
   // const object = [
   //   {
@@ -31,136 +33,7 @@ export const OrderForm = () => {
   //   }
   // ]
 
-  const [steps, setSteps] = useState([
-    {
-      id: 0,
-      parents: [],
-      title: 'Оберіть вид виробу',
-      inputsCount: 4,
-      unique: true,
-      visible: true,
-      items: [
-        {
-          id: 1,
-          name: 'Нова',
-          children: ['Оберіть термін виготовлення'],
-          type: 'with-img',
-          img: img,
-          selected: false,
-        },
-        {
-          id: 2,
-          name: 'По відбитку',
-          type: 'with-img',
-          img: img2,
-          selected: false,
-        }
-      ],
-    },
-    {
-      id: 1,
-      parents: ['Нова', 'По відбитку'],
-      title: 'Оберіть термін виготовлення',
-      inputsCount: 4,
-      unique: true,
-      visible: false,
-      items: [
-        {
-          id: 1,
-          name: '1 година',
-          type: '',
-          img: '',
-          selected: false,
-        },
-        {
-          id: 2,
-          name: '1 день',
-          type: '',
-          img: '',
-          selected: false,
-        },
-      ],
-    },
-    {
-      id: 2,
-      parents: ['1 година', '1 день'],
-      title: 'Оберіть організаційно-правову форму діяльності',
-      inputsCount: 4,
-      unique: true,
-      visible: false,
-      content: 'download-screen',
-      items: [
-        {
-          id: 1,
-          name: 'ФОП',
-          type: '',
-          img: '',
-          selected: false,
-        },
-        {
-          id: 2,
-          name: 'ТОВ',
-          type: '',
-          img: '',
-          selected: false,
-        },
-        {
-          id: 3,
-          name: 'Нотаріус/адвокат',
-          type: '',
-          img: '',
-          selected: false,
-        },
-        {
-          id: 4,
-          name: 'Лікар',
-          type: '',
-          img: '',
-          selected: false,
-        },
-      ],
-    },
-    {
-      id: 3,
-      parents: ['1 година', '1 день', 'Нова'],
-      title: 'Оберіть дизайн печатки',
-      inputsCount: 4,
-      unique: true,
-      visible: false,
-      content: 'download-screen',
-      items: [
-        {
-          id: 1,
-          name: 'ФОП',
-          type: '',
-          img: '',
-          selected: false,
-        },
-        {
-          id: 2,
-          name: 'ТОВ',
-          type: '',
-          img: '',
-          selected: false,
-        },
-        {
-          id: 3,
-          name: 'Нотаріус/адвокат',
-          type: '',
-          img: '',
-          selected: false,
-        },
-        {
-          id: 4,
-          name: 'Лікар',
-          type: '',
-          img: '',
-          selected: false,
-        },
-      ],
-    },
-  ])
-
+  const [steps, setSteps] = useState(data)
 
   const l = steps.length
 
@@ -169,6 +42,20 @@ export const OrderForm = () => {
     const newArray = [...steps]
     const screenId = +e.target.dataset.screenId
     const targetName = e.target.dataset.name
+    const allExcludes = []
+    
+
+    newArray[screenId].items.forEach(item => {
+      if (item.name === targetName) {
+        !newArray[screenId].excludes.includes(...item.exclude) &&
+        (newArray[screenId].excludes = item.exclude)
+      }
+    })
+
+    
+    newArray.forEach(screen => allExcludes.push(...screen.excludes))
+    exclude.current = allExcludes
+    
 
     const setSelect = () => {
       newArray[screenId].items.forEach((item) => {
@@ -179,10 +66,16 @@ export const OrderForm = () => {
       })
     }
 
+    // newArray[screenId+1].visible = true
+
     const setVisible = () => {
       newArray.forEach((step) => {
         if (step.parents.includes(targetName)) {
           step.visible = true
+        }
+        step.exists = true
+        if (exclude.current.includes(step.title)) {
+          step.exists = false
         }
       })
     }
@@ -215,7 +108,7 @@ export const OrderForm = () => {
     <div className='order__form-wrapper'>
       {steps.map((step) => {
         return (
-          step.visible && (
+          step.visible && step.exists && (
             <div key={step.id} className='order__form-step'>
               <h3 className='h3 order__h3'>{step.title}</h3>
               <div
@@ -232,16 +125,21 @@ export const OrderForm = () => {
                       type={item.type}
                       img={item.img}
                       selected={item.selected}
+                      price={item.price}
                       screenID={step.id}
                     />
                   )
                 })}
               </div>
-              {/* <div dangerouslySetInnerHTML={{ __html: step.content }} /> */}
               {step.content && step.content === 'download-screen' && (
-                <p>*Завантажте фото або скан-копію витягу з ЕДРПОУ/свідоцтво адвоката/диплом лікаря</p>
+                <div className="order__form-download">
+                  <p className="order__form-download-text"><span>*</span>Завантажте фото або скан-копію витягу з ЕДРПОУ/свідоцтво адвоката/диплом лікаря</p>
+                  <button className="order__download-button">
+                    <span><DownloadIcon/></span>
+                    Завантажити документ
+                    </button>
+                </div> 
               )}
-                {/* {step.content} */}
             </div>
           )
         )

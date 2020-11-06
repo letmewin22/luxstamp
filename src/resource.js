@@ -1,6 +1,8 @@
 
 import axios from 'axios'
 
+const URI = 'http://localhost:3000/db.json'
+
 export function useResource() {
   return {
     text: wrapPromise(fetchText()),
@@ -36,10 +38,12 @@ function wrapPromise(promise) {
 }
 
 async function fetchText() {
- return await axios.get('http://localhost:3004/languages')
+ const text = await axios.get(URI)
+ return await text.data.languages
 }
 
 async function fetchReviews() {
-  return await axios.get('http://localhost:3004/reviews')
- }
+  const reviews = await axios.get(URI)
+  return await reviews.data.reviews
+}
 

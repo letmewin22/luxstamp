@@ -5,10 +5,9 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "baseUrl": "./",
     "paths": {
-      "@": [
-        "./"
-      ]
+      "@/*": ["./*"],
     }
   },
   "filesGlob": [

@@ -40,7 +40,7 @@ export const Navbar = (props) => {
   const [isMobile, setIsMobile] = useState(false)
 
   useResize(() => {
-    window.innerWidth < 1060 ? setIsMobile(true) : setIsMobile(false)
+    window.innerWidth < 1280 ? setIsMobile(true) : setIsMobile(false)
   })
 
   const nav = useRef(null)

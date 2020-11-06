@@ -1,12 +1,11 @@
 import React, {useState, useRef, useContext} from 'react'
 import gsap from 'gsap'
-import arrow0 from '../../../img/arrow0.svg'
 import {SliderArrow} from '../../SliderArrow'
-import TextContext from '../../../context/TextContext'
+import TextContext from '@/context/TextContext'
 
 export const Reviews = (props) => {
 
-  const reviews = props.resource.reviews.read().data
+  const reviews = props.resource.reviews.read()
 
   const {clientsReviews} = useContext(TextContext)
 
@@ -51,7 +50,7 @@ export const Reviews = (props) => {
           <div className='dg__right'>
             <div className='dg__right-content'>
               <h2 className='h2 dg__h2'>{clientsReviews.title}</h2>
-              <img src={arrow0} alt='arrow' />
+              <img src='/img/arrow0.svg' alt='arrow' />
             </div>
           </div>
         </div>

@@ -20,8 +20,7 @@ const resource = useResource()
 
 export const Landing = () => {
   const [lang, setLang] = useState('uk')
-
-  const languages = resource.text.read().data
+  const languages = resource.text.read()
 
   useEffect(() => {
     document.title = languages[lang].title

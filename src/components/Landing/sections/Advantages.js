@@ -1,6 +1,5 @@
 import React, {useContext} from 'react'
-import TextContext from '../../../context/TextContext'
-import arrow0 from '../../../img/arrow0.svg'
+import TextContext from '@/context/TextContext'
 
 export const Advantages = () => {
   const {advantages} = useContext(TextContext)
@@ -16,7 +15,7 @@ export const Advantages = () => {
           <div className='dg__right'>
             <div className='dg__right-content'>
               <h2 className='h2 dg__h2'>{advantages.title}</h2>
-              <img src={arrow0} alt='arrow' />
+              <img src='/img/arrow0.svg' alt='arrow' />
             </div>
           </div>
         </div>

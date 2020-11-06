@@ -2,10 +2,6 @@ import React, {useContext} from 'react'
 import TextContext from '@/context/TextContext'
 import { OrderForm } from '../../OrderForm/OrderForm'
 
-import orderImg1 from '@/img/order/1.png'
-import orderImg2 from '@/img/order/2.png'
-import orderImg3 from '@/img/order/3.png'
-
 export const Order = () => {
   const {order} = useContext(TextContext)
 
@@ -18,7 +14,7 @@ export const Order = () => {
             <button className='order__btn'>
               {order.items[0]}
               <div className='img-wrapper'>
-                <img src={orderImg1} alt='order-img' />
+                <img src='/img/order/1.png' alt='order-img' />
               </div>
             </button>
           </li>
@@ -26,7 +22,7 @@ export const Order = () => {
             <button className='order__btn'>
               {order.items[1]}
               <div className='img-wrapper'>
-                <img src={orderImg2} alt='order-img' />
+                <img src='/img/order/2.png' alt='order-img' />
               </div>
             </button>
           </li>
@@ -34,7 +30,7 @@ export const Order = () => {
             <button className='order__btn'>
               {order.items[2]}
               <div className='img-wrapper'>
-                <img src={orderImg3} alt='order-img' />
+                <img src='/img/order/3.png' alt='order-img' />
               </div>
             </button>
           </li>

@@ -665,11 +665,12 @@
   position: relative;
   user-select: none;
   cursor: pointer;
-  img {
-    display: block;
-    max-width: 100%;
-    margin-bottom: size(36, 12);
-  }
+}
+
+.order__img {
+  display: block;
+  max-height: 100%;
+  margin-bottom: size(36, 12);
 }
 
 .order__checkbox {
@@ -728,5 +729,73 @@
 .order__form-step {
   + .order__form-step {
     margin-top: size(120, 72);
+  }
+}
+
+.order__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: size(32, 24) size(38, 28);
+  background: white;
+  border-radius: 33px;
+  margin-bottom: size(36, 16);
+  font-size: size(27, 20);
+  @include medium;
+}
+
+.order__card-img {
+  display: flex;
+  max-width: 100%;
+}
+
+.order__form-download {
+  max-width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: size(48, 20);
+  @include media('<=#{$br2}') {
+    max-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.order__form-download-text {
+  margin-right: 20px;
+  width: 70%;
+  flex: 1 1;
+  span {
+    color: $accent;
+  }
+}
+
+.order__download-button {
+  display: flex;
+  flex-shrink: 1;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  border: 2px solid $black;
+  border-radius: 33px;
+  padding: 17px 37px;
+  transition: color .3s ease, background-color .3s ease;
+  font-size: inherit;
+  color: $black;
+  span {
+    display: block;
+    margin-right: 10px;
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+  }
+  @include media('>=960px') {
+    width: 328px;
+    &:hover {
+      background-color: $black;
+      color: white;
+    }
   }
 }

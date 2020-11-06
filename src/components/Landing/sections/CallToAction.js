@@ -1,7 +1,6 @@
 import React, {useContext} from 'react'
 import {Button} from '../../Button/Button'
-import arrow0 from '../../../img/arrow0.svg'
-import TextContext from '../../../context/TextContext'
+import TextContext from '@/context/TextContext'
 
 export const CallToAction = () => {
   const {cta} = useContext(TextContext)
@@ -17,7 +16,7 @@ export const CallToAction = () => {
           <div className='dg__right'>
             <div className='dg__right-content'>
               <h2 className='h2 dg__h2'>{cta.title}</h2>
-              <img src={arrow0} alt='arrow' />
+              <img src='/img/arrow0.svg' alt='arrow' />
             </div>
           </div>
         </div>

@@ -1,9 +1,7 @@
 import React, {useContext, useRef} from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import TextContext from '../../../context/TextContext'
+import TextContext from '@/context/TextContext'
 
-import imgBig from '../../../img/1screen-big.png'
-import imgSmall from '../../../img/1screen-small.png'
 import { useHeaderLoading } from './headerLoading'
 import { useHeaderParallax } from './headerParallax'
 
@@ -44,8 +42,8 @@ export const Header = () => {
             style={{opacity: 0, transform: 'translateY(60px)'}}
             className='header__img-wrapper'
           >
-            <img data-parallax='25' src={imgSmall} alt='header__img' />
-            <img data-parallax='50' src={imgBig} alt='header__img' />
+            <img data-parallax='25' src='/img/1screen-big.png' alt='header__img' />
+            <img data-parallax='50' src='/img/1screen-small.png' alt='header__img' />
           </div>
         </div>
       </div>

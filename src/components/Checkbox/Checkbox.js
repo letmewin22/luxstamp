@@ -4,7 +4,13 @@ import {Check} from './Check'
 export const Checkbox = (props) => {
   return (
     <label className='order__custom-checkbox'>
-      {props.type === 'with-img' && <img src={props.img} alt='' />}
+      {props.type === 'with-img' && <img className='order__img' src={props.img} alt='' />}
+      {props.type === 'card' && (
+        <div className='order__card'>
+          <img className='order__card-img' src={props.img} alt='' />
+          <div className="order__card-price">{props.price}</div>
+        </div>
+      )}
       <input
         data-screen-id={props.screenID}
         checked={props.selected}
