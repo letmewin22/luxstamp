@@ -1,4 +1,5 @@
 import React, {useState, useRef, useContext} from 'react'
+import {Link} from "react-router-dom";
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import './Navbar.scss'
 import {Logo} from '../Logo'
@@ -65,9 +66,9 @@ export const Navbar = (props) => {
               {link.text}
             </AnchorLink>
           ) : (
-            <a href={link.href} className={parent + '__link'}>
+            <Link to='/contacts' className={parent + '__link'}>
               {link.text}
-            </a>
+            </Link>
           )}
         </li>
       )
@@ -79,9 +80,9 @@ export const Navbar = (props) => {
       <div className='navbar'>
         <div className='container navbar__container'>
           <div className='navbar__left'>
-            <a href='/' aria-label='logo' className='navbar__logo'>
+            <Link to='/' aria-label='logo' className='navbar__logo'>
               <Logo />
-            </a>
+            </Link>
             <button
               onClick={props.langSwitcher}
               className='navbar__lang-switcher'

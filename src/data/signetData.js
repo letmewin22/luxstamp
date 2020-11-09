@@ -1,4 +1,4 @@
-export const data = [
+export const signetData = [
   {
     id: 0,
     parents: [],
@@ -24,7 +24,7 @@ export const data = [
         type: 'with-img',
         img: '/img/order/form/2.png',
         selected: false,
-      }
+      },
     ],
   },
   {
@@ -102,7 +102,7 @@ export const data = [
   },
   {
     id: 3,
-    parents: ['ФОП', 'ТОВ'],
+    parents: ['ФОП', 'ТОВ', 'Нотаріус/адвокат', 'Лікар'],
     title: 'Оберіть дизайн печатки',
     inputsCount: 4,
     unique: true,
@@ -146,7 +146,16 @@ export const data = [
   },
   {
     id: 4,
-    parents: ['ФОП', 'ТОВ', 'Дизайн 1', 'Дизайн 2'],
+    parents: [
+      'ФОП',
+      'ТОВ',
+      'Нотаріус/адвокат',
+      'Лікар',
+      'Дизайн 1',
+      'Дизайн 2',
+      'Дизайн 3',
+      'Дизайн 4',
+    ],
     title: 'Оберіть тип оснастки',
     inputsCount: 3,
     unique: true,
@@ -161,7 +170,7 @@ export const data = [
         type: 'card',
         img: '/img/order/form/SM-1.png',
         selected: false,
-        price: '236 грн'
+        price: '236 грн',
       },
       {
         id: 2,
@@ -170,7 +179,7 @@ export const data = [
         type: 'card',
         img: '/img/order/form/SM-1.png',
         selected: false,
-        price: '236 грн'
+        price: '236 грн',
       },
       {
         id: 3,
@@ -179,7 +188,7 @@ export const data = [
         type: 'card',
         img: '/img/order/form/SM-1.png',
         selected: false,
-        price: '236 грн'
+        price: '236 грн',
       },
       {
         id: 4,
@@ -188,7 +197,64 @@ export const data = [
         type: 'card',
         img: '/img/order/form/SM-1.png',
         selected: false,
-        price: '236 грн'
+        price: '236 грн',
+      },
+    ],
+  },
+  {
+    id: 5,
+    parents: [
+      'ФОП',
+      'ТОВ',
+      'Нотаріус/адвокат',
+      'Лікар',
+      'Дизайн 1',
+      'Дизайн 2',
+      'Дизайн 3',
+      'Дизайн 4',
+      'COLOP MOUSE',
+      'TRODAT 400R',
+      'TRODAT 400R',
+      'COLOP R40'
+    ],
+    title: 'Оберіть додаткові аксесуари',
+    inputsCount: 3,
+    unique: true,
+    visible: false,
+    excludes: [],
+    exists: true,
+    items: [
+      {
+        id: 1,
+        name: 'Штемпельна подушка (чорний або червоний відтиск) 80 грн',
+        exclude: [],
+        img: '',
+        selected: false,
+        price: '80 грн',
+      },
+      {
+        id: 2,
+        name: 'Штемпельна подушка із 2-ма кольорами 145 грн',
+        exclude: [],
+        img: '',
+        selected: false,
+        price: '145 грн',
+      },
+      {
+        id: 3,
+        name: 'Штемпельна фарба (25 мл) 80 грн',
+        exclude: [],
+        img: '',
+        selected: false,
+        price: '75 грн',
+      },
+      {
+        id: 4,
+        name: 'Футляр для печатки 80 грн',
+        exclude: [],
+        img: '',
+        selected: false,
+        price: '236 грн',
       },
     ],
   },

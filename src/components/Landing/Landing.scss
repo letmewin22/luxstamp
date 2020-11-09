@@ -671,6 +671,9 @@
   display: block;
   max-height: 100%;
   margin-bottom: size(36, 12);
+  @include media('<=#{$br2}') {
+    height: 101px;
+  }
 }
 
 .order__checkbox {
@@ -693,12 +696,13 @@
 .order__fake-checkbox-text {
   display: inline-block;
   margin-left: 20px;
+  flex: 0 0 74%;
 }
 
 .order__fake-checkbox {
   pointer-events: none;
-  width: 40px;
-  height: 40px;
+  width: size(40, 30);
+  height: size(40, 30);
   border-radius: 5px;
   border: 2px solid $black;
   display: flex;
@@ -709,20 +713,38 @@
     max-width: 100%;
     opacity: 0;
     transition: opacity 0.3s ease;
+    @include media('<=#{$br4}') {
+      width: 35%;
+    }
   }
 }
 
 
 .order__form-inputs {
  display: grid;
- grid-column-gap: 40px;
- grid-row-gap: 40px;
+ grid-column-gap: size(40, 30);
+ grid-row-gap: size(40, 30);
  margin-top: size(40, 20);
  &--3 {
   grid-template-columns: repeat(3, 1fr);
+  @include media('<=1280px') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media('<=#{$br3}') {
+    grid-template-columns: repeat(1, 1fr);
+  }
  }
  &--4 {
   grid-template-columns: repeat(4, 1fr);
+  @include media('<=1280px') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include media('<=#{$br2}') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media('<=#{$br4}') {
+    grid-template-columns: repeat(1, 1fr);
+  }
  }
 }
 
@@ -745,8 +767,13 @@
 }
 
 .order__card-img {
-  display: flex;
+  display: block;
   max-width: 100%;
+  width: 55%;
+}
+
+.order__card-price {
+  margin-left: 20px;
 }
 
 .order__form-download {
@@ -783,6 +810,8 @@
   transition: color .3s ease, background-color .3s ease;
   font-size: inherit;
   color: $black;
+  white-space: nowrap;
+  cursor: pointer;
   span {
     display: block;
     margin-right: 10px;
@@ -797,5 +826,8 @@
       background-color: $black;
       color: white;
     }
+  }
+  @include media('<=960px') {
+    margin-top: 32px;
   }
 }

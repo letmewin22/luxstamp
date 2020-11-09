@@ -1,41 +1,61 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import TextContext from '@/context/TextContext'
-import { OrderForm } from '../../OrderForm/OrderForm'
+import {OrderForm} from '../../OrderForm/OrderForm'
+import { signetData } from '@/data/signetData'
+
 
 export const Order = () => {
   const {order} = useContext(TextContext)
+
+  const [items, setItems] = useState([{
+        id: 1,
+        price: 420,
+        name: 'Печатки',
+        active: false,
+        items: signetData
+      },
+      {
+        id: 2,
+        price: 350,
+        name: 'Штампы',
+        active: false,
+        items: []
+      },
+      {
+        id: 3,
+        price: 280,
+        name: 'Факсимиле',
+        active: false,
+        items: []
+      }])
+
+  const onClickHandler = (i) => {
+    items.forEach(item => {
+      item.active = false
+      item.id === i+1 && (item.active = true)
+    })
+    setItems([...items])
+  }
 
   return (
     <section id='order' className='section order'>
       <div className='container section__container order__container'>
         <h2 className='h2 order__h2'>{order.title}</h2>
         <ul className='order__items'>
-          <li className='order__li'>
-            <button className='order__btn'>
-              {order.items[0]}
-              <div className='img-wrapper'>
-                <img src='/img/order/1.png' alt='order-img' />
-              </div>
-            </button>
-          </li>
-          <li className='order__li'>
-            <button className='order__btn'>
-              {order.items[1]}
-              <div className='img-wrapper'>
-                <img src='/img/order/2.png' alt='order-img' />
-              </div>
-            </button>
-          </li>
-          <li className='order__li'>
-            <button className='order__btn'>
-              {order.items[2]}
-              <div className='img-wrapper'>
-                <img src='/img/order/3.png' alt='order-img' />
-              </div>
-            </button>
-          </li>
+          {order.items.map((item, i) => (
+            <li key={item} className='order__li'>
+              <button onClick={onClickHandler.bind(null, i)} className='order__btn'>
+                {item}
+                <div className='img-wrapper'>
+                  <img src={`/img/order/${i+1}.png`} alt='order-img' />
+                </div>
+              </button>
+            </li>
+          ))}
         </ul>
-        <OrderForm/>
+        {items.map(item => item.active && (
+          <OrderForm key={item.id} data={item.items} />
+        ))}
       </div>
     </section>
   )
