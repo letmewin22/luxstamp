@@ -1,8 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {useResource} from '@/resource'
-import TextContext from '@/context/TextContext'
-
-import {Navbar} from '../Navbar/Navbar'
 import {Header} from './Header/Header'
 import {Instruction} from './sections/Instruction'
 import {Order} from './sections/Order'
@@ -19,36 +16,20 @@ import './Landing.scss'
 const resource = useResource()
 
 export const Landing = () => {
-  const [lang, setLang] = useState('uk')
-  const languages = resource.text.read()
-
-  useEffect(() => {
-    document.title = languages[lang].title
-  }, [languages, lang])
-
-  const langSwitcher = (e) => {
-    const langSwitcherText = lang === 'uk' ? 'Ua' : 'Ru'
-    e.target.innerText = langSwitcherText
-    lang === 'uk' ? setLang('ru') : setLang('uk')
-  }
-
   return (
     <>
-      <TextContext.Provider value={languages[lang]}>
-        <Navbar langSwitcher={langSwitcher} />
-        <Header />
-        <main>
-          <Instruction />
-          <Order />
-          <Advantages />
-          <WhyWe />
-          <Clients />
-          <Reviews resource={resource} />
-          <Delivery />
-          <CallToAction />
-          <Footer />
-        </main>
-      </TextContext.Provider>
+      <Header />
+      <main>
+        <Instruction />
+        <Order />
+        <Advantages />
+        <WhyWe />
+        <Clients />
+        <Reviews resource={resource} />
+        <Delivery />
+        <CallToAction />
+        <Footer />
+      </main>
     </>
   )
 }

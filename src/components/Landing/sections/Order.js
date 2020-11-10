@@ -5,7 +5,17 @@ import { signetData } from '@/data/signetData'
 
 
 export const Order = () => {
-  const {order} = useContext(TextContext)
+  const {order, form} = useContext(TextContext)
+
+  
+  signetData.forEach((el, i) => {
+    el.title = form.signet.screens[i].title
+    el.items.forEach((item, j) => {
+      form.signet.screens[i].items[j] && 
+      (item.name = form.signet.screens[i].items[j])
+    })
+  })
+
 
   const [items, setItems] = useState([{
         id: 1,

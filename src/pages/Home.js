@@ -1,13 +1,14 @@
-import React, { Suspense } from 'react'
-import { Landing } from '@/components/Landing/Landing'
-import { Loader } from '@/components/Loader/Loader'
+import React, {Suspense} from 'react'
+import {PageLayout} from '@/hoc/PageLayout'
+import {Landing} from '@/components/Landing/Landing'
+import {Loader} from '@/components/Loader/Loader'
 
 export const Home = () => {
   return (
-    <div>
-      <Suspense fallback={<Loader/>}>
+    <Suspense fallback={<Loader />}>
+      <PageLayout>
         <Landing />
-      </Suspense>
-    </div>
+      </PageLayout>
+    </Suspense>
   )
 }
