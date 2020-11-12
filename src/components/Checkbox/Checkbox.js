@@ -15,6 +15,7 @@ export const Checkbox = (props) => {
         data-screen-id={props.screenID}
         checked={props.selected}
         data-name={props.name}
+        data-parent={props.parent}
         onChange={props.onChange}
         className='order__checkbox'
         type='checkbox'

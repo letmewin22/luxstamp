@@ -9,7 +9,7 @@ export const Order = (props) => {
 
   const formData = props.resource.form.read()
 
-  formData[0].items.forEach((el, i) => {
+  formData[0].items.forEach(el => {
     let formData = signetData[el.id]
 
     el.items.forEach((data, j) => {
@@ -18,12 +18,15 @@ export const Order = (props) => {
         exclude: [],
         name: '',
         img: '',
-        selected: false
+        selected: false,
+        exists: true
       }
-      data.name && (formData.items[j].name =data.name)
-      data.img && (formData.items[j].img = data.img)
-      data.price && (formData.items[j].price = data.price)
-      data.type && (formData.items[j].type = data.type)
+
+      const fields = ['name', 'img', 'price', 'type']
+      
+      fields.forEach(item => {
+        data[item] && (formData.items[j][item] = data[item])
+      })
     })
 
   })
@@ -73,8 +76,11 @@ export const Order = (props) => {
         <h2 className='h2 order__h2'>{order.title}</h2>
         <ul className='order__items'>
           {order.items.map((item, i) => (
-            <li key={item} className={`order__li ${item.active && 'active'}`}>
-              <button onClick={onClickHandler.bind(null, i)} className='order__btn'>
+            <li key={item} className='order__li'>
+              <button 
+              onClick={onClickHandler.bind(null, i)} 
+              className={`order__btn ${items[i].active && 'active'}`}
+              >
                 {item}
                 <div className='img-wrapper'>
                   <img src={`/img/order/${i+1}.png`} alt='order-img' />

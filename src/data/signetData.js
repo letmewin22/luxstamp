@@ -16,6 +16,7 @@ export const signetData = [
         type: 'with-img',
         img: '/img/order/form/1.png',
         selected: false,
+        exists: true,
       },
       {
         id: 2,
@@ -24,6 +25,7 @@ export const signetData = [
         type: 'with-img',
         img: '/img/order/form/2.png',
         selected: false,
+        exists: true,
       },
     ],
   },
@@ -44,6 +46,7 @@ export const signetData = [
         type: '',
         img: '',
         selected: false,
+        exists: true,
       },
       {
         id: 2,
@@ -52,6 +55,7 @@ export const signetData = [
         type: '',
         img: '',
         selected: false,
+        exists: true,
       },
     ],
   },
@@ -69,10 +73,11 @@ export const signetData = [
       {
         id: 1,
         name: 'ФОП',
-        exclude: [],
+        exclude: ['Дизайн 2'],
         type: '',
         img: '',
         selected: false,
+        exists: true,
       },
       {
         id: 2,
@@ -81,6 +86,7 @@ export const signetData = [
         type: '',
         img: '',
         selected: false,
+        exists: true,
       },
       {
         id: 3,
@@ -89,6 +95,7 @@ export const signetData = [
         type: '',
         img: '',
         selected: false,
+        exists: true,
       },
       {
         id: 4,
@@ -97,12 +104,13 @@ export const signetData = [
         type: '',
         img: '',
         selected: false,
+        exists: true,
       },
     ],
   },
   {
     id: 3,
-    parents: ['ФОП', 'ТОВ', 'Нотаріус/адвокат', 'Лікар'],
+    parents: ['Оберіть організаційно-правову форму діяльності'],
     title: 'Оберіть дизайн печатки',
     inputsCount: 4,
     unique: true,
@@ -114,14 +122,8 @@ export const signetData = [
   {
     id: 4,
     parents: [
-      'ФОП',
-      'ТОВ',
-      'Нотаріус/адвокат',
-      'Лікар',
-      'Дизайн 1',
-      'Дизайн 2',
-      'Дизайн 3',
-      'Дизайн 4',
+      'Оберіть дизайн печатки',
+      'Оберіть організаційно-правову форму діяльності',
     ],
     title: 'Оберіть тип оснастки',
     inputsCount: 3,
@@ -134,18 +136,9 @@ export const signetData = [
   {
     id: 5,
     parents: [
-      'ФОП',
-      'ТОВ',
-      'Нотаріус/адвокат',
-      'Лікар',
-      'Дизайн 1',
-      'Дизайн 2',
-      'Дизайн 3',
-      'Дизайн 4',
-      'COLOP MOUSE',
-      'COLOP R41',
-      'TRODAT 400R',
-      'COLOP R40'
+      'Оберіть дизайн печатки',
+      'Оберіть організаційно-правову форму діяльності',
+      'Оберіть тип оснастки',
     ],
     title: 'Оберіть додаткові аксесуари',
     inputsCount: 3,
@@ -153,6 +146,6 @@ export const signetData = [
     visible: false,
     excludes: [],
     exists: true,
-    items: []
+    items: [],
   },
 ]
