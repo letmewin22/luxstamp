@@ -6,7 +6,8 @@ const URI = 'http://localhost:3000/db.json'
 export function useResource() {
   return {
     text: wrapPromise(fetchText()),
-    reviews: wrapPromise(fetchReviews())
+    reviews: wrapPromise(fetchReviews()),
+    form: wrapPromise(fetchForm())
   }
 }
 
@@ -45,5 +46,10 @@ async function fetchText() {
 async function fetchReviews() {
   const reviews = await axios.get(URI)
   return await reviews.data.reviews
+}
+
+async function fetchForm() {
+  const form = await axios.get(URI)
+  return await form.data.form
 }
 

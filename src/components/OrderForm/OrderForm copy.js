@@ -8,9 +8,7 @@ import { reducer } from './reducer'
 
 /**
 * @todo
-1. Сделать парентсы не только инпуты, но и экраны
-2. Сделать эксклюды не только по экранам, но и по элементам
-3. Сделать уникальные идентификаторы и использовать их, а не имена для поиска
+1. Сделать русскую версию формы.
 * */
 
 export const OrderForm = ({data}) => {
@@ -21,6 +19,7 @@ export const OrderForm = ({data}) => {
 
   const onChange = (e) => dispatch({type: 'change', payload: {e, counter, exclude}})
   
+
   return (
     <div className='order__form-wrapper'>
       {state.map((step) => {

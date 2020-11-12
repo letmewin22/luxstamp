@@ -21,7 +21,7 @@ export const Landing = () => {
       <Header />
       <main>
         <Instruction />
-        <Order />
+        <Order resource={resource} />
         <Advantages />
         <WhyWe />
         <Clients />

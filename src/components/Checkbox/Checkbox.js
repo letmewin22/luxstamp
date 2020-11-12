@@ -8,7 +8,7 @@ export const Checkbox = (props) => {
       {props.type === 'card' && (
         <div className='order__card'>
           <img className='order__card-img' src={props.img} alt='' />
-          <div className="order__card-price">{props.price}</div>
+          <div className="order__card-price">{props.price} грн</div>
         </div>
       )}
       <input
