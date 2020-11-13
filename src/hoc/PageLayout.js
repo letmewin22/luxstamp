@@ -11,6 +11,11 @@ export const PageLayout = ({children}) => {
   const languages = resource.text.read()
 
   useEffect(() => {
+    setLang(JSON.parse(localStorage.getItem('lang') || 'uk'))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('lang', JSON.stringify(lang))
     document.title = languages[lang].title
   }, [languages, lang])
 

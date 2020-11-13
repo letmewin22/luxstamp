@@ -1,5 +1,5 @@
-import React, {useState, useRef, useContext} from 'react'
-import {Link} from "react-router-dom";
+import React, {useState, useRef, useContext, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import './Navbar.scss'
 import {Logo} from '../Logo'
@@ -9,6 +9,13 @@ import TextContext from '../../context/TextContext'
 export const Navbar = (props) => {
 
   const {navigation} = useContext(TextContext)
+  const [lang, setLang] = useState('uk')
+
+  const langText = lang === 'uk' ? 'Ru' : 'Ua'
+
+  useEffect(() => {
+    setLang(JSON.parse(localStorage.getItem('lang') || 'uk'))
+  }, [])
 
   const links = [
     {
@@ -87,7 +94,7 @@ export const Navbar = (props) => {
               onClick={props.langSwitcher}
               className='navbar__lang-switcher'
             >
-              Ru
+              {langText}
             </button>
           </div>
           <div className='navbar__right'>

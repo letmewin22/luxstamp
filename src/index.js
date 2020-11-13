@@ -6,6 +6,14 @@ import App from './App'
 import './scss/index.scss'
 import * as serviceWorker from './serviceWorker'
 
+/**
+* @todo
+1. Уникальные инпуты для формы
+2. Контакты
+3. Подсчёт прайса
+4. Форма отправки
+* */
+
 ReactDOM.render(
     <BrowserRouter>
       <App />

@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react'
 import TextContext from '@/context/TextContext'
 import {OrderForm} from '../../OrderForm/OrderForm'
-import { signetData } from '@/data/signetData'
+import { signetData, stampData, facsimileData } from '@/data'
 
 
 export const Order = (props) => {
@@ -9,35 +9,48 @@ export const Order = (props) => {
 
   const formData = props.resource.form.read()
 
-  formData[0].items.forEach(el => {
-    let formData = signetData[el.id]
+  const forms = [signetData, stampData, facsimileData]
 
-    el.items.forEach((data, j) => {
-      formData.items[j] = {
-        id: j + 1,
-        exclude: [],
-        name: '',
-        img: '',
-        selected: false,
-        exists: true
-      }
 
-      const fields = ['name', 'img', 'price', 'type']
-      
-      fields.forEach(item => {
-        data[item] && (formData.items[j][item] = data[item])
+  formData.forEach((item, k) => {
+    item.items.forEach(el => {
+      let formData = forms[k][el.id]
+  
+      el.items.forEach((data, j) => {
+        formData.items[j] = {
+          id: j + 1,
+          key: '',
+          exclude: [],
+          name: '',
+          img: '',
+          selected: false,
+          exists: true
+        }
+  
+        const fields = ['name', 'img', 'price', 'type', 'key']
+        
+        fields.forEach(item => {
+          data[item] && (formData.items[j][item] = data[item])
+        })
+      })
+  
+    })
+  })
+
+
+  forms.forEach((elem, k) => {
+    elem.forEach((el, i) => {
+      form[k].screens[i] && (el.title = form[k].screens[i].title)
+      el.contentText && (el.contentText = form[k].screens[i].contentText)
+      el.contentBtn && (el.contentBtn = form[k].screens[i].contentBtn)
+      el.items.forEach((item, j) => {
+        if (form[k].screens[i].items[j]) {
+          item.name = form[k].screens[i].items[j]
+        }
       })
     })
-
   })
 
-  signetData.forEach((el, i) => {
-    el.title = form.signet.screens[i].title
-    el.items.forEach((item, j) => {
-      form.signet.screens[i].items[j] && 
-      (item.name = form.signet.screens[i].items[j])
-    })
-  })
 
 
   const [items, setItems] = useState([{
@@ -52,14 +65,14 @@ export const Order = (props) => {
         price: 350,
         name: 'Штампы',
         active: false,
-        items: []
+        items: stampData
       },
       {
         id: 3,
         price: 280,
         name: 'Факсимиле',
         active: false,
-        items: []
+        items: facsimileData
       }])
 
   const onClickHandler = (i) => {

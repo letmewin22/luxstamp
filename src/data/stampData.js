@@ -1,6 +1,6 @@
 // key generator: https://passwordsgenerator.net/
 
-const signetData = [
+const stampData = [
   {
     id: 0,
     key: 'jLdtVP5x7t',
@@ -15,7 +15,7 @@ const signetData = [
       {
         id: 1,
         key: '3Gdy25ZGgQ',
-        name: 'Нова',
+        name: 'Новий',
         exclude: [],
         type: 'with-img',
         img: '/img/order/form/1.png',
@@ -26,7 +26,7 @@ const signetData = [
         id: 2,
         key: 'zY43nWwJ3c',
         name: 'По відбитку',
-        exclude: ['88EU52GQhx'],
+        exclude: [],
         type: 'with-img',
         img: '/img/order/form/2.png',
         selected: false,
@@ -71,7 +71,7 @@ const signetData = [
     id: 2,
     key: 'fy7Z63Dh8T',
     parents: ['3YhyXK6Nmu'],
-    title: 'Оберіть організаційно-правову форму діяльності',
+    title: 'Оберіть розмір кліше',
     inputsCount: 4,
     unique: true,
     visible: false,
@@ -84,7 +84,7 @@ const signetData = [
       {
         id: 1,
         key: '3MrepEDVTB',
-        name: 'ФОП',
+        name: '47 х 18 мм',
         exclude: ['VtDGTgR4ft'],
         type: '',
         img: '',
@@ -94,7 +94,7 @@ const signetData = [
       {
         id: 2,
         key: 'nDuAh6gaCq',
-        name: 'ТОВ',
+        name: '58 х 22 мм',
         exclude: [],
         type: '',
         img: '',
@@ -104,7 +104,7 @@ const signetData = [
       {
         id: 3,
         key: 'BLq6Z2EEV3',
-        name: 'Нотаріус/адвокат',
+        name: '60 х 40 мм',
         exclude: [],
         type: '',
         img: '',
@@ -114,8 +114,8 @@ const signetData = [
       {
         id: 4,
         key: 'cgbrYP9mQs',
-        name: 'Лікар',
-        exclude: [],
+        name: 'Інший розмір',
+        exclude: ['7X3NDca3vz'],
         type: '',
         img: '',
         selected: false,
@@ -125,18 +125,6 @@ const signetData = [
   },
   {
     id: 3,
-    key: '88EU52GQhx',
-    parents: ['fy7Z63Dh8T'],
-    title: 'Оберіть дизайн печатки',
-    inputsCount: 4,
-    unique: true,
-    visible: false,
-    exists: true,
-    excludes: [],
-    items: [],
-  },
-  {
-    id: 4,
     key: '7X3NDca3vz',
     parents: ['88EU52GQhx', 'fy7Z63Dh8T'],
     title: 'Оберіть тип оснастки',
@@ -148,7 +136,7 @@ const signetData = [
     items: [],
   },
   {
-    id: 5,
+    id: 4,
     key: 'GqH6cnUxyV',
     parents: ['88EU52GQhx', 'fy7Z63Dh8T', '7X3NDca3vz'],
     title: 'Оберіть додаткові аксесуари',
@@ -161,4 +149,4 @@ const signetData = [
   },
 ]
 
-export default signetData
+export default stampData

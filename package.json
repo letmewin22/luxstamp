@@ -73,7 +73,17 @@
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": ["react-app"],
+    "overrides": [
+      {
+        "files": ["**/*.js"],
+        "rules": {
+          "arrow-parens": "off",
+          "semi": [1, "never"],
+          "quotes": [2, "single", "avoid-escape"]
+        }
+      }
+    ]
   },
   "browserslist": {
     "production": [
