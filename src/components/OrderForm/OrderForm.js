@@ -1,10 +1,10 @@
 import React, {useReducer} from 'react'
-import {Checkbox} from '../Checkbox/Checkbox'
 
-import {DownloadIcon} from '../DownloadIcon'
 import {motion} from 'framer-motion'
 import {pageTransition, pageVariants} from '@/pageTransition'
 import {reducer} from './reducer'
+import {Checkbox} from '../Checkbox/Checkbox'
+import { FormVariants } from './FormVariants'
 
 export const OrderForm = ({data}) => {
 
@@ -40,6 +40,7 @@ export const OrderForm = ({data}) => {
                       uKey={item.key}
                       name={item.name}
                       type={item.type}
+                      typeText={item.typeText}
                       img={item.img}
                       selected={item.selected}
                       price={item.price}
@@ -49,20 +50,7 @@ export const OrderForm = ({data}) => {
                   )
                 )}
               </div>
-              {step.content && step.content === 'download-screen' && (
-                <div className='order__form-download'>
-                  <p className='order__form-download-text'>
-                    <span>*</span> {step.contentText}
-                  </p>
-                  <label className='order__download-button'>
-                    <span>
-                      <DownloadIcon />
-                    </span>
-                    {step.contentBtn}
-                    <input type='file' />
-                  </label>
-                </div>
-              )}
+              <FormVariants state={step}/>
             </motion.div>
           )
       )}

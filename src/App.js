@@ -3,7 +3,7 @@ import {Switch, Route, useLocation} from 'react-router-dom'
 import {AnimatePresence} from 'framer-motion'
 
 import {Home} from './pages/Home'
-import {Contacts} from './pages/Contacts'
+import {Contact} from './pages/Contact'
 
 function App() {
   const location = useLocation()
@@ -15,7 +15,7 @@ function App() {
             <Home />
           </Route>
           <Route path='/contacts'>
-            <Contacts />
+            <Contact />
           </Route>
         </Switch>
       </AnimatePresence>

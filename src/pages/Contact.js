@@ -1,16 +1,13 @@
 import React, {Suspense} from 'react'
 import {PageLayout} from '@/hoc/PageLayout'
 import {Loader} from '@/components/Loader/Loader'
+import {Contacts} from '@/components/Contacts/Contacts'
 
-export const Contacts = () => {
+export const Contact = () => {
   return (
     <Suspense fallback={<Loader />}>
       <PageLayout>
-        <header className='contacts-header'>
-          <div className='container contacts-header__container'>
-            <h1 className='h1'>Контакти</h1>
-          </div>
-        </header>
+        <Contacts/>
       </PageLayout>
     </Suspense>
   )

@@ -47,6 +47,9 @@ export const Order = (props) => {
         if (form[k].screens[i].items[j]) {
           item.name = form[k].screens[i].items[j]
         }
+        if (form[k].screens[i].itemsTypeText) {
+          item.typeText = form[k].screens[i].itemsTypeText[j]
+        }
       })
     })
   })
@@ -82,6 +85,9 @@ export const Order = (props) => {
     })
     setItems([...items])
   }
+  items.forEach(item => {
+    item.active && console.log(item.name)
+  })
 
   return (
     <section id='order' className='section order'>

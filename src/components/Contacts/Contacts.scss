@@ -1,0 +1,71 @@
+@import '../../scss/helpers/all.scss';
+
+.contacts-header__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: size(40, 24);
+  grid-gap: 40px;
+  align-items: start;
+  @include media('<=#{$br1}') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media('<=#{$br3}') {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.contacts-header__item {
+  a, span {
+    display: block;
+    width: fit-content;
+    + a {
+      margin-top: size(16, 12);
+    }
+    + span {
+      margin-top: size(16, 12);
+    }
+  }
+  h4 {
+    margin-bottom: size(16, 12);
+  }
+  @include media('>=#{$br2}') {
+    a {
+      transition: color .3s ease;
+      &:hover {
+        color: $accent;
+      }
+    }
+
+  }
+}
+
+.contacts-rep {
+  margin-top: size(100, 60);
+}
+
+.contacts-rep__representations-items {
+  display: grid;
+  grid-gap: 40px;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  margin-top: size(40, 24);
+  @include media('<=#{$br1}') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include media('<=#{$br3}') {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.contacts-rep__representations {
+  width: 100%;
+  max-width: none;
+}
+
+.contacts-rep__representations-li {
+  margin-top: 0;
+  + .contacts-rep__representations-li {
+    margin-top: 0;
+  }
+}

@@ -593,7 +593,7 @@
   align-items: baseline;
 }
 
-.representations-h6 {
+.representations__h6 {
   color: #c4c4c4;
 }
 
@@ -798,6 +798,13 @@
   }
 }
 
+.order__small-text {
+  font-size: size(16, 14);
+  display: block;
+  margin-top: size(12, 8);
+  line-height: 1.3em;
+}
+
 .order__download-button {
   display: flex;
   flex-shrink: 1;
@@ -821,7 +828,7 @@
     }
   }
   @include media('>=960px') {
-    width: 328px;
+    max-width: 328px;
     &:hover {
       background-color: $black;
       color: white;

@@ -26,6 +26,11 @@ export const Checkbox = (props) => {
         </div>
         <span className='order__fake-checkbox-text'>{props.name}</span>
       </div>
+      {props.type === 'with-text' && (
+        <span className='order__small-text'>
+          {props.typeText}
+        </span>
+      )}
     </label>
   )
 }
