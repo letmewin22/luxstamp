@@ -7,7 +7,12 @@ export const Button = (props) => {
   classes.push(props.classes)
   return (
     <>
-      <button className={classes.join(' ')}>{props.text}</button>
+      <button 
+      type={props.type} 
+      className={classes.join(' ')}
+      >
+        {props.text}
+      </button>
     </>
   )
 }

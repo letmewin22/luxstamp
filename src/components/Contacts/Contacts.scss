@@ -69,3 +69,31 @@
     margin-top: 0;
   }
 }
+
+.contacts-form {
+  display: grid;
+  width: 71%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: size(105, 10);
+  grid-row-gap: size(30, 20);
+  margin-top: size(60, 32);
+  @include media('<=1366px') {
+    width: 100%;
+  }
+  @include media('<=#{$br2}') {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 0;
+  }
+}
+@include media('<=#{$br2}') {
+.contacts-form__input {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+}
+
+.contacts-form__input--full {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}

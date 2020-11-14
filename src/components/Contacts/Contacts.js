@@ -76,19 +76,26 @@ export const Contacts = () => {
         <section className='section if-question'>
           <div className='container section__container last'>
             <h2 className='h2'>Якщо є питання:</h2>
-            <Form classes={['contacts-form']}>
+            <Form classes='contacts-form'>
               <Input
                 type='text'
                 id='name'
                 placeholder="Ваше ім’я"
-                text="Ім'я"
+                classes='contacts-form__input'
               />
               <Input
                 type='phone'
                 id='phone'
                 placeholder="Номер телефону"
-                text="Телефон"
+                classes='contacts-form__input'
                 required={true}
+              />
+              <Input
+                type='textarea'
+                id='textarea'
+                placeholder="Хочу печатку за 1 годину!"
+                text="Питання"
+                classes='contacts-form__input contacts-form__input--full'
               />
             </Form>
           </div>

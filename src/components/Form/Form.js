@@ -1,38 +1,54 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
+import { Button } from '../Button/Button'
+
 
 export const Form = (props) => {
 
-  const inputs = []
+  const inputs = useRef([])
 
-  props.children.forEach((_) => {
-    inputs.push({
-      field: '',
-      value: ''
+  useEffect(() => {
+
+    props.children.forEach((child) => {
+      inputs.current.push({
+        field: child.props.id,
+        value: ''
+      })
     })
-  })
 
-  const [values, setValues] = useState(inputs)
+  }, [props.children])
 
+  const [values, setValues] = useState(inputs.current)
+  
   const classes = ['form']
 
-  props.classes && classes.push(...props.classes)
+  props.classes && classes.push(props.classes)
 
   const onChange = (e) => {
 
-    values[0].field = e.target.dataset.id
-    values[0].value = e.target.value
+    values.forEach(el => {
+      if (e.target.dataset.id === el.field) {
+        el.value = e.target.value
+      }
+  })
 
     setValues([...values])
   }
 
-  console.log(values)
+  const onSubmitHandler = (e) => {
+    e.preventDefault()
+  }
 
   return (
-    <form className={classes.join(' ')}>
+    <form onSubmit={onSubmitHandler} className={classes.join(' ')}>
       {React.Children.map(props.children, (child) => (
         React.cloneElement(child, {onChange})
       )
       )}
+      <Button 
+        text={'Замовити печатку'}
+        classes='form__btn'
+        type='submit'
+      />
     </form>
   )
 }

@@ -6,22 +6,35 @@
   flex-direction: column-reverse;
 }
 
+.input__field-wrapper {
+  width: 100%;
+  position: relative;
+}
+
 .input__field {
   background-color: white;
   font-size: inherit;
+  width: 100%;
   color: inherit;
   padding: size(23,17) size(40, 20);
   border-radius: 33px;
   position: relative;
   display: block;
+  border: none;
+  @include reg;
+}
+
+.input__field--textarea {
+  border-radius: size(53, 33);
+  min-height: size(300, 170);
+  resize: none;
 }
 
 .input__placeholder {
   position: absolute;
-  top: 50%;
   left: size(40, 20);
-  transform: translateY(-50%);
-  margin-top: 0.65em;
+  top: 0;
+  margin-top: 1em;
   pointer-events: none;
   transition: opacity .2s ease, visibility .2s ease;
   span {

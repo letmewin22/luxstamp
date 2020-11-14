@@ -3,7 +3,6 @@ import React, {useState, useRef} from 'react'
 import './Input.scss'
 
 export const Input = (props) => {
-
   const [value, setValue] = useState('')
   const placeholder = useRef(null)
 
@@ -15,30 +14,45 @@ export const Input = (props) => {
     if (e.target.value.trim().length > 0) {
       placeholder.current.classList.add('input__placeholder--hidden')
     }
+
+    props.onChange(e)
   }
 
-  const classes = ['input__field']
+  const classes = ['input']
 
-  props.classes && classes.push(...props.classes)
+  props.classes && classes.push(props.classes)
 
   return (
-    <div className='input'>
-      <input
-        type={props.type}
-        className={classes.join(' ')}
-        data-required={props.required}
-        id={props.id}
-        data-id={props.id}
-        value={value}
-        onChange={props.onChange}
-      />
+    <div className={classes.join(' ')}>
+      <div className='input__field-wrapper'>
+        {props.type === 'textarea' ? (
+          <textarea
+            className='input__field input__field--textarea'
+            data-required={props.required}
+            id={props.id}
+            data-id={props.id}
+            value={value}
+            onChange={onChangeHandler}
+          />
+        ) : (
+          <input
+            type={props.type}
+            className={'input__field'}
+            data-required={props.required}
+            id={props.id}
+            data-id={props.id}
+            value={value}
+            onChange={onChangeHandler}
+          />
+        )}
+        <span className='input__placeholder' ref={placeholder}>
+          {props.placeholder}
+          {props.required && <span>*</span>}
+        </span>
+      </div>
       <label htmlFor={props.id} className='input__label'>
         {props.text}
       </label>
-      <span className='input__placeholder' ref={placeholder}>
-        {props.placeholder}
-        {props.required && <span>*</span>}
-      </span>
     </div>
   )
 }
