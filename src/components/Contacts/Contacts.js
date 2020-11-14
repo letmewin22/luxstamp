@@ -76,9 +76,6 @@ export const Contacts = () => {
         <section className='section if-question'>
           <div className='container section__container last'>
             <h2 className='h2'>Якщо є питання:</h2>
-            {/* <form className="form">
-
-            </form> */}
             <Form classes={['contacts-form']}>
               <Input
                 type='text'
@@ -87,11 +84,11 @@ export const Contacts = () => {
                 text="Ім'я"
               />
               <Input
-                required={true}
                 type='phone'
                 id='phone'
                 placeholder="Номер телефону"
                 text="Телефон"
+                required={true}
               />
             </Form>
           </div>

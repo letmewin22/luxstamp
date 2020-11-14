@@ -3,6 +3,7 @@ import React, {useState, useRef} from 'react'
 import './Input.scss'
 
 export const Input = (props) => {
+
   const [value, setValue] = useState('')
   const placeholder = useRef(null)
 
@@ -27,8 +28,9 @@ export const Input = (props) => {
         className={classes.join(' ')}
         data-required={props.required}
         id={props.id}
+        data-id={props.id}
         value={value}
-        onChange={onChangeHandler}
+        onChange={props.onChange}
       />
       <label htmlFor={props.id} className='input__label'>
         {props.text}
