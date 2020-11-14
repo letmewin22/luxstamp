@@ -1,7 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { DownloadIcon } from '../DownloadIcon'
 
 export const FormVariants = ({state}) => {
+
+  const [files, setFiles] = useState([])
+
+  const onChangeHandler = (e) => {
+    console.log(e.target.files[0].name)
+    files.push(e.target.files[0].name)
+    setFiles(files)
+  }
+
+
   return (
     <>
       {state.content && state.content === 'download-screen' && (
@@ -14,8 +24,9 @@ export const FormVariants = ({state}) => {
               <DownloadIcon />
             </span>
             {state.contentBtn}
-            <input type='file' />
+            <input type='file' onChange={onChangeHandler} />
           </label>
+            {/* <span>{files.join(', ')}</span> */}
         </div>
       )}
     </>

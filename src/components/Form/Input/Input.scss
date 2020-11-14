@@ -1,0 +1,42 @@
+@import '../../../scss/helpers/all.scss';
+
+.input {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.input__field {
+  background-color: white;
+  font-size: inherit;
+  color: inherit;
+  padding: size(23,17) size(40, 20);
+  border-radius: 33px;
+  position: relative;
+  display: block;
+}
+
+.input__placeholder {
+  position: absolute;
+  top: 50%;
+  left: size(40, 20);
+  transform: translateY(-50%);
+  margin-top: 0.65em;
+  transition: opacity .2s ease, visibility .2s ease;
+  span {
+    display: inline-block;
+    margin-left: 5px;
+    color: $accent;
+  }
+}
+
+.input__placeholder--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.input__label {
+  font-size: 14px;
+}
+
+

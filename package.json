@@ -78,7 +78,7 @@
       {
         "files": ["**/*.js"],
         "rules": {
-          "arrow-parens": "off",
+          "arrow-parens": [1, "never"],
           "semi": [1, "never"],
           "quotes": [2, "single", "avoid-escape"]
         }

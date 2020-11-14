@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React, {useContext} from 'react'
 import TextContext from '@/context/TextContext'
 
 import './Contacts.scss'
+import {Input, Form} from '../Form/'
 
 export const Contacts = () => {
-
   const {footer} = useContext(TextContext)
 
   return (
@@ -42,13 +42,14 @@ export const Contacts = () => {
         <section className='section contacts-rep'>
           <div className='container'>
             <div className='representations contacts-rep__representations'>
-              <h6 className='h6'>
-                {footer.representationsText}
-              </h6>
+              <h6 className='h6'>{footer.representationsText}</h6>
               <ul className='representations__items contacts-rep__representations-items'>
                 {footer.representations.map((el, i) => {
                   return (
-                    <li key={el.address} className='representations__li contacts-rep__representations-li'>
+                    <li
+                      key={el.address}
+                      className='representations__li contacts-rep__representations-li'
+                    >
                       <span className='number representations__li-number'>
                         0{i + 1}
                       </span>
@@ -72,9 +73,27 @@ export const Contacts = () => {
             </div>
           </div>
         </section>
-        <section className="section if-question">
-          <div className="container section__container last">
-            <h2 className="h2">Якщо є питання:</h2>
+        <section className='section if-question'>
+          <div className='container section__container last'>
+            <h2 className='h2'>Якщо є питання:</h2>
+            {/* <form className="form">
+
+            </form> */}
+            <Form classes={['contacts-form']}>
+              <Input
+                type='text'
+                id='name'
+                placeholder="Ваше ім’я"
+                text="Ім'я"
+              />
+              <Input
+                required={true}
+                type='phone'
+                id='phone'
+                placeholder="Номер телефону"
+                text="Телефон"
+              />
+            </Form>
           </div>
         </section>
       </main>
