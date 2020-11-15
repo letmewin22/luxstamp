@@ -702,33 +702,387 @@
           "items": [
             {
               "name": "Дизайн 1",
-              "img": "/img/order/form/1.png",
-              "type": "with-img",
-              "key": "4ZUQ33EpnW"
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-01.svg",
+              "type": "with-img"
             },
             {
               "name": "Дизайн 2",
-              "img": "/img/order/form/1.png",
-              "type": "with-img",
-              "key": "VtDGTgR4ft"
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-02.svg",
+              "type": "with-img"
             },
             {
               "name": "Дизайн 3",
-              "img": "/img/order/form/1.png",
-              "type": "with-img",
-              "key": "uLvCM86RDC"
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-03.svg",
+              "type": "with-img"
             },
             {
               "name": "Дизайн 4",
-              "img": "/img/order/form/1.png",
-              "type": "with-img",
-              "key": "Hy9GdMgjCE"
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-04.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 5",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-05.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 6",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-06.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 7",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-07.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 8",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-08.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 9",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-09.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 10",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-10.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 11",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-11.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 12",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-12.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 13",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-13.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 14",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-14.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 15",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-15.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 16",
+              "org": "fop",
+              "img": "/img/order/form/signet/fop/Ф-16.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 1",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-01.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 2",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-02.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 3",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-03.svg",
+              "type": "with-img"
             },
             {
               "name": "Дизайн 4",
-              "img": "/img/order/form/1.png",
-              "type": "with-img",
-              "key": "P8xRdPjP28"
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-04.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 5",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-05.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 6",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-06.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 7",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-07.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 8",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-08.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 9",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-09.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 10",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-10.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 11",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-11.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 12",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-12.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 13",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-13.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 14",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-14.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 15",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-15.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 16",
+              "org": "tov",
+              "img": "/img/order/form/signet/tov/Т-16.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 1",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-1.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 2",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-2.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 3",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-3.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 4",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-4.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 5",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-5.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 6",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-6.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 7",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-7.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 8",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-8.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 9",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-9.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 10",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-10.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 11",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-11.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 12",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-12.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 13",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-13.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 14",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-14.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 15",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-15.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 16",
+              "org": "lawyer",
+              "img": "/img/order/form/signet/lawyer/А-16.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 1",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-1_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 2",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-2_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 3",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-3_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 4",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-4_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 5",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-5_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 6",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-6_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 7",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-7_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 8",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-8_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 9",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-9_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 10",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-10_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 11",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-11_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 12",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-12_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 13",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-13_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 14",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-14_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 15",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-15_У.svg",
+              "type": "with-img"
+            },
+            {
+              "name": "Дизайн 16",
+              "org": "doctor",
+              "img": "/img/order/form/signet/doctor/Л-16_У.svg",
+              "type": "with-img"
             }
           ]
         },
@@ -737,31 +1091,101 @@
           "items": [
             {
               "name": "COLOP MOUSE",
-              "img": "/img/order/form/SM-1.png",
+              "img": "/img/order/form/signet/furniture/COLOP-MOUSE.png",
               "price": 236,
               "type": "card",
-              "key": "mk485Yc8ps"
-            },
-            {
-              "name": "COLOP R41",
-              "img": "/img/order/form/SM-1.png",
-              "price": 216,
-              "type": "card",
-              "key": "NyuNUUf76x"
-            },
-            {
-              "name": "TRODAT 400R",
-              "img": "/img/order/form/SM-1.png",
-              "price": 216,
-              "type": "card",
-              "key": "7k66p76PvM"
+              "org": "fop-lawyer-tov"
             },
             {
               "name": "COLOP R40",
-              "img": "/img/order/form/SM-1.png",
+              "img": "/img/order/form/signet/furniture/COLOP-R40.png",
+              "price": 216,
+              "type": "card",
+              "org": "fop-lawyer-tov"
+            },
+            {
+              "name": "FLASH 40",
+              "img": "/img/order/form/signet/furniture/FLASH-40.png",
+              "price": 216,
+              "type": "card",
+              "org": "fop-lawyer"
+            },
+            {
+              "name": "TRODAT 400R",
+              "img": "/img/order/form/signet/furniture/TRODAT-400R.png",
               "price": 246,
               "type": "card",
-              "key": "xBxmKQ6dyE"
+              "org": "fop-lawyer-tov"
+            },
+            {
+              "name": "TRODAT 4642",
+              "img": "/img/order/form/signet/furniture/TRODAT-4642.png",
+              "price": 246,
+              "type": "card",
+              "org": "fop-lawyer-tov"
+            },
+            {
+              "name": "TRODAT 4940",
+              "img": "/img/order/form/signet/furniture/TRODAT-4940.png",
+              "price": 246,
+              "type": "card",
+              "org": "fop-lawyer-tov"
+            },
+            {
+              "name": "TRODAT 9342",
+              "img": "/img/order/form/signet/furniture/TRODAT-9342.png",
+              "price": 246,
+              "type": "card",
+              "org": "fop-lawyer-tov-doctor"
+            },
+            {
+              "name": "TRODAT 46042",
+              "img": "/img/order/form/signet/furniture/TRODAT-46042.png",
+              "price": 246,
+              "type": "card",
+              "org": "fop-lawyer-tov"
+            },
+            {
+              "name": "TRODAT 52045",
+              "img": "/img/order/form/signet/furniture/TRODAT-52045.png",
+              "price": 246,
+              "type": "card",
+              "org": "fop-lawyer-tov"
+            },
+            {
+              "name": "TRODAT 46025",
+              "img": "/img/order/form/signet/furniture/TRODAT-46025.png",
+              "price": 246,
+              "type": "card",
+              "org": "doctor"
+            },
+            {
+              "name": "TRODAT 46019",
+              "img": "/img/order/form/signet/furniture/TRODAT-46019.png",
+              "price": 246,
+              "type": "card",
+              "org": "doctor"
+            },
+            {
+              "name": "TRODAT 4630",
+              "img": "/img/order/form/signet/furniture/TRODAT-4630.png",
+              "price": 246,
+              "type": "card",
+              "org": "doctor"
+            },
+            {
+              "name": "Printer R17",
+              "img": "/img/order/form/signet/furniture/Printer-R17.png",
+              "price": 246,
+              "type": "card",
+              "org": "doctor"
+            },
+            {
+              "name": "Printer R24",
+              "img": "/img/order/form/signet/furniture/Printer-R24.png",
+              "price": 246,
+              "type": "card",
+              "org": "doctor"
             }
           ]
         },
@@ -769,20 +1193,16 @@
           "id": 5,
           "items": [
             {
-              "price": 140,
-              "key": "ByLJPLq6mM"
+              "price": 140
             },
             {
-              "price": 80,
-              "key": "QhLvd94ApA"
+              "price": 80
             },
             {
-              "price": 220,
-              "key": "h22YNsUY2f"
+              "price": 220
             },
             {
-              "price": 160,
-              "key": "vyS5tc4E3w"
+              "price": 160
             }
           ]
         }
@@ -800,29 +1220,25 @@
               "name": "COLOP MOUSE",
               "img": "/img/order/form/SM-1.png",
               "price": 236,
-              "type": "card",
-              "key": "mk485Yc8ps"
+              "type": "card"
             },
             {
               "name": "COLOP R41",
               "img": "/img/order/form/SM-1.png",
               "price": 216,
-              "type": "card",
-              "key": "NyuNUUf76x"
+              "type": "card"
             },
             {
               "name": "TRODAT 400R",
               "img": "/img/order/form/SM-1.png",
               "price": 216,
-              "type": "card",
-              "key": "7k66p76PvM"
+              "type": "card"
             },
             {
               "name": "COLOP R40",
               "img": "/img/order/form/SM-1.png",
               "price": 246,
-              "type": "card",
-              "key": "xBxmKQ6dyE"
+              "type": "card"
             }
           ]
         },
@@ -830,20 +1246,16 @@
           "id": 4,
           "items": [
             {
-              "price": 140,
-              "key": "ByLJPLq6mM"
+              "price": 140
             },
             {
-              "price": 80,
-              "key": "QhLvd94ApA"
+              "price": 80
             },
             {
-              "price": 220,
-              "key": "h22YNsUY2f"
+              "price": 220
             },
             {
-              "price": 160,
-              "key": "vyS5tc4E3w"
+              "price": 160
             }
           ]
         }
@@ -861,29 +1273,25 @@
               "name": "COLOP MOUSE",
               "img": "/img/order/form/SM-1.png",
               "price": 236,
-              "type": "card",
-              "key": "mk485Yc8ps"
+              "type": "card"
             },
             {
               "name": "COLOP R41",
               "img": "/img/order/form/SM-1.png",
               "price": 216,
-              "type": "card",
-              "key": "NyuNUUf76x"
+              "type": "card"
             },
             {
               "name": "TRODAT 400R",
               "img": "/img/order/form/SM-1.png",
               "price": 216,
-              "type": "card",
-              "key": "7k66p76PvM"
+              "type": "card"
             },
             {
               "name": "COLOP R40",
               "img": "/img/order/form/SM-1.png",
               "price": 246,
-              "type": "card",
-              "key": "xBxmKQ6dyE"
+              "type": "card"
             }
           ]
         },
@@ -891,20 +1299,16 @@
           "id": 5,
           "items": [
             {
-              "price": 140,
-              "key": "ByLJPLq6mM"
+              "price": 140
             },
             {
-              "price": 80,
-              "key": "QhLvd94ApA"
+              "price": 80
             },
             {
-              "price": 220,
-              "key": "h22YNsUY2f"
+              "price": 220
             },
             {
-              "price": 160,
-              "key": "vyS5tc4E3w"
+              "price": 160
             }
           ]
         }

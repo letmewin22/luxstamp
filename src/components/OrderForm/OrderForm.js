@@ -12,6 +12,7 @@ export const OrderForm = ({data}) => {
 
   const onChange = (e) => dispatch({type: 'change', payload: e})
 
+  // console.log(data)
   return (
     <div className='order__form-wrapper'>
       {state.map(step =>

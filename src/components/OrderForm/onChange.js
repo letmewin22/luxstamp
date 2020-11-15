@@ -32,8 +32,7 @@ class OnChange {
   setExcludes() {
     this.state[this.screenId].items.forEach((item) => {
       if (item.key === this.targetName) {
-        !this.state[this.screenId].excludes.includes(...item.exclude) &&
-          (this.state[this.screenId].excludes = item.exclude)
+          this.state[this.screenId].excludes = item.exclude
       }
     })
 
@@ -70,10 +69,9 @@ class OnChange {
   }
 
   setInputVisible() {
-    this.state[this.screenId + 1] &&
-      this.state[this.screenId + 1].items.forEach((item) => {
-        this.setExists(item, item.key)
-      })
+    this.state.forEach(el => el.items.forEach((item) => {
+      this.setExists(item, item.key)
+    }))
   }
 
   display() {
@@ -90,8 +88,8 @@ class OnChange {
 
     this.counter.current = this.screenId
 
-    this.setSelect()
     this.setInputVisible()
+    this.setSelect()
     this.setVisible()
   }
 }

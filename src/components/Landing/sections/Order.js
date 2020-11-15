@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react'
 import TextContext from '@/context/TextContext'
 import {OrderForm} from '../../OrderForm/OrderForm'
 import { signetData, stampData, facsimileData } from '@/data'
+import { keysGenerator } from '@/utils/keysGenerator'
 
 
 export const Order = (props) => {
@@ -27,13 +28,28 @@ export const Order = (props) => {
           exists: true
         }
   
-        const fields = ['name', 'img', 'price', 'type', 'key']
+        const fields = ['name', 'img', 'price', 'type']
         
         fields.forEach(item => {
           data[item] && (formData.items[j][item] = data[item])
         })
+
+        formData.items[j].key = keysGenerator(10)
+
+        if (data.org) {
+          const orgs = data.org.split('-')
+          const orgField = forms[0][2]
+          const orgTypes = ['fop', 'tov', 'lawyer', 'doctor']
+
+          orgTypes.forEach((orgType, i) => {
+            if (!orgs.includes(orgType)) {
+              if (!orgField.items[i].exclude.includes(formData.items[j].key)) {
+                orgField.items[i].exclude.push(formData.items[j].key)
+              }
+            }
+          })
+        }
       })
-  
     })
   })
 

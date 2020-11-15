@@ -670,6 +670,7 @@
 .order__img {
   display: block;
   max-height: 100%;
+  max-width: size(146, 100);
   margin-bottom: size(36, 12);
   @include media('<=#{$br2}') {
     height: 101px;
@@ -763,6 +764,7 @@
   border-radius: 33px;
   margin-bottom: size(36, 16);
   font-size: size(27, 20);
+  height: size(270, 230);
   @include medium;
 }
 
@@ -770,6 +772,9 @@
   display: block;
   max-width: 100%;
   width: 55%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left;
 }
 
 .order__card-price {

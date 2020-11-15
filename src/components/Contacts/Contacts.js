@@ -84,7 +84,7 @@ export const Contacts = () => {
                 classes='contacts-form__input'
               />
               <Input
-                type='phone'
+                type='tel'
                 id='phone'
                 placeholder="Номер телефону"
                 classes='contacts-form__input'

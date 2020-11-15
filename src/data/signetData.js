@@ -78,14 +78,15 @@ const signetData = [
     exists: true,
     excludes: [],
     content: 'download-screen',
-    contentText: 'Завантажте фото або скан-копію витягу з ЕДРПОУ/свідоцтво адвоката/диплом лікаря',
+    contentText:
+      'Завантажте фото або скан-копію витягу з ЕДРПОУ/свідоцтво адвоката/диплом лікаря',
     contentBtn: 'Завантажити документ',
     items: [
       {
         id: 1,
         key: '3MrepEDVTB',
         name: 'ФОП',
-        exclude: ['VtDGTgR4ft'],
+        exclude: [],
         type: '',
         img: '',
         selected: false,
