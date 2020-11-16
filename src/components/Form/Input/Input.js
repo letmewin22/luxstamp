@@ -1,34 +1,13 @@
 import React, {useState, useRef} from 'react'
+import { required } from '../required'
 
 import './Input.scss'
 
 export const Input = (props) => {
   const [value, setValue] = useState('')
   const [error, setError] = useState(false)
+  
   const placeholder = useRef(null)
-  const input = useRef(null)
-
-  const setRequired = (el) => {
-    if (el.dataset.required) {
-      setError(false)
-      if (props.required && props.required.type === 'minlen') {
-        const isLessThanMinValue = el.value.trim().length < props.required.minValue
-        if (isLessThanMinValue && el.value.trim().length > 0) {
-          setError(true)
-        }
-        props.setIsActive(!isLessThanMinValue) 
-      }
-
-      if (props.required && props.required.type === 'email') {
-       const regExp = /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/
-        const isEmailValid = regExp.test(el.value.trim())
-        if (!isEmailValid) {
-          setError(true)
-        }
-        props.setIsActive(isEmailValid) 
-      }
-    }
-  }
 
   const onChangeHandler = (e) => {
     setValue(e.target.value)
@@ -38,7 +17,10 @@ export const Input = (props) => {
     if (e.target.value.trim().length > 0) {
       placeholder.current.classList.add('input__placeholder--hidden')
     }
-    setRequired(e.target)
+
+    const isRequired = required({el: e.target, props})
+
+    setError(isRequired)
 
     props.onChange(e)
   }
@@ -52,8 +34,7 @@ export const Input = (props) => {
     'id': props.id,
     'data-id': props.id,
     'value': value,
-    'onChange': onChangeHandler,
-    'ref': input
+    'onChange': onChangeHandler
   }
 
   return (
