@@ -3,6 +3,7 @@ import TextContext from '@/context/TextContext'
 
 import './Contacts.scss'
 import {Input, Form} from '../Form/'
+import { Button } from '../Button/Button'
 
 export const Contacts = () => {
   const {footer} = useContext(TextContext)
@@ -78,25 +79,40 @@ export const Contacts = () => {
             <h2 className='h2'>Якщо є питання:</h2>
             <Form classes='contacts-form'>
               <Input
+                tagName='input'
                 type='text'
                 id='name'
-                placeholder="Ваше ім’я"
+                placeholder='Ваше ім’я'
                 classes='contacts-form__input'
               />
               <Input
+                tagName='input'
                 type='tel'
                 id='phone'
-                placeholder="Номер телефону"
+                placeholder='Номер телефону'
                 classes='contacts-form__input'
-                required={true}
+                required={{type: 'minlen', minValue: 10}}
+                requiredText={'Некорректний номер'}
               />
               <Input
+                tagName='input'
                 type='textarea'
                 id='textarea'
-                placeholder="Хочу печатку за 1 годину!"
-                text="Питання"
+                placeholder='Хочу печатку за 1 годину!'
+                text='Питання'
                 classes='contacts-form__input contacts-form__input--full'
               />
+              <div className='form__bottom'>
+                <p>
+                  <span>*</span> якщо не знайшли потрібний дизайн або оснащення
+                  зв'яжіться з нами і ми вирішимо це питання.
+                </p>
+                <Button
+                  text={'Замовити печатку'}
+                  classes='form__btn'
+                  type='submit'
+                />
+              </div>
             </Form>
           </div>
         </section>

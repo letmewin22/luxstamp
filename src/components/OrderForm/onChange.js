@@ -2,9 +2,10 @@ class OnChange {
   constructor(state, action) {
     
     this.state = state
-    this.e = action.payload
+    this.e = action.payload.e
     this.counter = {current: 0}
     this.exclude = []
+    this.prices = [action.payload.price]
 
     this.init()
 
@@ -18,13 +19,6 @@ class OnChange {
     this.allExcludes = []
 
     this.setExcludes()
-
-    // this.state.forEach(el => {
-    //   el.price && console.log(el.price)
-    //   el.items.forEach(item => {
-    //     item.selected && item.price && console.log(item.price)
-    //   })
-    // })
 
     this.display()
   }
@@ -74,6 +68,17 @@ class OnChange {
     }))
   }
 
+  countPrice() {
+    this.state.forEach(el => {
+      el.price && this.prices.push(el.price)
+      el.items.forEach(item => {
+        item.selected && item.price && this.prices.push(item.price)
+      })
+    })
+    const arrSum = arr => arr.reduce((a,b) => a + b, 0)
+    console.log(arrSum(this.prices))
+  }
+
   display() {
     if (this.counter.current < this.screenId) {
       this.counter.current++
@@ -88,9 +93,11 @@ class OnChange {
 
     this.counter.current = this.screenId
 
+    
     this.setInputVisible()
     this.setSelect()
     this.setVisible()
+    this.countPrice()
   }
 }
 

@@ -6,13 +6,12 @@ import {reducer} from './reducer'
 import {Checkbox} from '../Checkbox/Checkbox'
 import { FormVariants } from './FormVariants'
 
-export const OrderForm = ({data}) => {
+export const OrderForm = ({price, data}) => {
 
   const [state, dispatch] = useReducer(reducer, data)
 
-  const onChange = (e) => dispatch({type: 'change', payload: e})
+  const onChange = (e) => dispatch({type: 'change', payload: {e, price}})
 
-  // console.log(data)
   return (
     <div className='order__form-wrapper'>
       {state.map(step =>

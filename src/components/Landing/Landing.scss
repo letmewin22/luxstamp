@@ -12,11 +12,14 @@
 .header {
   height: 100vh;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
   width: 100%;
 }
 
 .header__container {
   height: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
   @include media('<=#{$br1}') {

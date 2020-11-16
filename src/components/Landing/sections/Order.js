@@ -101,9 +101,9 @@ export const Order = (props) => {
     })
     setItems([...items])
   }
-  items.forEach(item => {
-    item.active && console.log(item.name)
-  })
+  // items.forEach(item => {
+  //   item.active && console.log(item.name)
+  // })
 
   return (
     <section id='order' className='section order'>
@@ -125,7 +125,7 @@ export const Order = (props) => {
           ))}
         </ul>
         {items.map(item => item.active && (
-          <OrderForm key={item.id} data={item.items} />
+          <OrderForm key={item.id} data={item.items} price={item.price} />
         ))}
       </div>
     </section>

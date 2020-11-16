@@ -20,8 +20,12 @@
   border-radius: 33px;
   position: relative;
   display: block;
-  border: none;
+  border: 1px solid transparent;
   @include reg;
+}
+
+.input__field--error {
+  border-color: $accent;
 }
 
 .input__field--textarea {
@@ -48,6 +52,18 @@
   opacity: 0;
   visibility: hidden;
 }
+
+.input__required-text {
+  position: absolute;
+  font-size: 14px;
+  color: $accent;
+  opacity: 0;
+  pointer-events: none;
+ }
+
+ .input__required-text--active {
+  opacity: 1;
+ }
 
 .input__label {
   font-size: 14px;

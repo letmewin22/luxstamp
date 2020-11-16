@@ -1,0 +1,24 @@
+@import '../../scss/helpers/all.scss';
+
+.form__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: size(40, 20);
+  p span {
+    color: $accent;
+  }
+  @include media('<=#{$br2}') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form__btn {
+  @include media('>=#{$br2}') {
+    justify-self: end;
+  }
+}    

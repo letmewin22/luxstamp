@@ -28,7 +28,7 @@ const signetData = [
         name: 'По відбитку',
         exclude: ['88EU52GQhx'],
         type: 'with-img',
-        img: '/img/order/form/2.png',
+        img: '/img/order/form/2.svg',
         selected: false,
         exists: true,
       },
