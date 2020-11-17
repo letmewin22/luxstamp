@@ -1,18 +1,22 @@
+import axios from 'axios'
+
 export const fetchContacts = (data, cb) => {
-  console.log(data)
-  const url = 'http://emotion-agency.com/drafts/api/telegram.php'
+  const url = '/api/contacts/telegram.php'
 
   const finalData = {
-    name: data[0].value,
-    phone: data[1].value,
-    answers: data[2].value,
+    name: '',
+    phone: '',
+    answers: '',
   }
+
+  Object.keys(finalData).map((el, i) => finalData[el] = data[i].value)
 
   const request = async () => {
     try {
-      await fetch(url, {
-        method: 'POST',
-        body: 'param=' + JSON.stringify(finalData),
+      await axios({
+        method: 'post',
+        url,
+        data: 'param=' + JSON.stringify(finalData),
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
@@ -20,6 +24,7 @@ export const fetchContacts = (data, cb) => {
       cb()
     }
     catch(error) {
+      cb()
       console.log(error)
       alert('Нажаль, виникла помилка:( Спробуйте ще раз.')
     }

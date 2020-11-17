@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 
-const URI = 'http://localhost:3000/db.json'
+const URI = '/db.json'
 
 export function useResource() {
   return {

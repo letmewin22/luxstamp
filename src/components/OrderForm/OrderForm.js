@@ -1,16 +1,19 @@
-import React, {useReducer} from 'react'
+import React, {useReducer, useState} from 'react'
 
 import {motion} from 'framer-motion'
 import {pageTransition, pageVariants} from '@/pageTransition'
 import {reducer} from './reducer'
 import {Checkbox} from '../Checkbox/Checkbox'
 import { FormVariants } from './FormVariants'
+import { OrderFinalScreen } from '../OrderFinalScreen/OrderFinalScreen'
+import { useCallback } from 'react'
 
 export const OrderForm = ({price, data}) => {
 
   const [state, dispatch] = useReducer(reducer, data)
+  const [finalPrice, setFinalPrice] = useState(price)
 
-  const onChange = (e) => dispatch({type: 'change', payload: {e, price}})
+  const onChange = useCallback((e) => dispatch({type: 'change', payload: {e, price, setFinalPrice}}), [price])
 
   return (
     <div className='order__form-wrapper'>
@@ -54,6 +57,7 @@ export const OrderForm = ({price, data}) => {
             </motion.div>
           )
       )}
+      <OrderFinalScreen finalPrice={finalPrice}/>
     </div>
   )
 }

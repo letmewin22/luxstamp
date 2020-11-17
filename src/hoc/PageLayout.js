@@ -3,6 +3,7 @@ import TextContext from '@/context/TextContext'
 import {useResource} from '@/resource'
 import {Navbar} from '@/components/Navbar/Navbar'
 import {AnimationWrapper} from './AnimationWrapper'
+import { useCallback } from 'react'
 
 const resource = useResource()
 
@@ -11,19 +12,21 @@ export const PageLayout = ({children}) => {
   const languages = resource.text.read()
 
   useEffect(() => {
-    setLang(JSON.parse(localStorage.getItem('lang') || 'uk'))
+    setLang(JSON.parse(localStorage.getItem('lang') || '"uk"'))
   }, [])
+
+
 
   useEffect(() => {
     localStorage.setItem('lang', JSON.stringify(lang))
     document.title = languages[lang].title
   }, [languages, lang])
 
-  const langSwitcher = (e) => {
+  const langSwitcher = useCallback((e) => {
     const langSwitcherText = lang === 'uk' ? 'Ua' : 'Ru'
     e.target.innerText = langSwitcherText
     lang === 'uk' ? setLang('ru') : setLang('uk')
-  }
+  }, [lang])
 
   return (
     <>

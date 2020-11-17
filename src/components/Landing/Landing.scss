@@ -786,6 +786,7 @@
 .order__form-download {
   max-width: 80%;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
   margin-top: size(48, 20);
@@ -794,6 +795,14 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+.files-output {
+  position: absolute;
+  right: 0;
+  bottom: size(-50, -30);
+  display: flex;
+  flex-direction: column;
 }
 
 .order__form-download-text {
@@ -843,6 +852,18 @@
   }
   @include media('<=960px') {
     margin-top: 32px;
+  }
+}
+
+.order__final-screen {
+  margin-top: size(100, 60)
+}
+
+.order__final-price {
+  @include medium;
+  font-size: size(36, 24);
+  span {
+    color: $accent;
   }
 }
 

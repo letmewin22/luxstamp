@@ -1,16 +1,19 @@
 import React, {useState} from 'react'
-import { DownloadIcon } from '../DownloadIcon'
+import {DownloadIcon} from '../DownloadIcon'
+
+const TYPES = ['image/jpeg', 'image/png']
 
 export const FormVariants = ({state}) => {
-
-  const [files, setFiles] = useState([])
+  const [files, setFiles] = useState(null)
 
   const onChangeHandler = (e) => {
-    console.log(e.target.files[0].name)
-    files.push(e.target.files[0].name)
-    setFiles(files)
+    const file = e.target.files[0]
+    if (TYPES.includes(file.type) && file.size < 10000000) {
+      setFiles(file)
+    } else {
+      alert('Файлы должны быть только в формате jpg или png и весить не больше 10мб')
+    }
   }
-
 
   return (
     <>
@@ -26,7 +29,7 @@ export const FormVariants = ({state}) => {
             {state.contentBtn}
             <input type='file' onChange={onChangeHandler} />
           </label>
-            {/* <span>{files.join(', ')}</span> */}
+          <span className='files-output'>{files && files.name}</span>
         </div>
       )}
     </>

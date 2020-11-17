@@ -14,7 +14,7 @@ export const Navbar = (props) => {
   const langText = lang === 'uk' ? 'Ru' : 'Ua'
 
   useEffect(() => {
-    setLang(JSON.parse(localStorage.getItem('lang') || 'uk'))
+    setLang(JSON.parse(localStorage.getItem('lang') || '"uk"'))
   }, [])
 
   const links = [

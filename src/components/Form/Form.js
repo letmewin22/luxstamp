@@ -57,6 +57,7 @@ export const Form = (props) => {
             val.error = false
           }
         })
+        setValues([...values])
       })
       // console.log(values)
       
@@ -68,8 +69,8 @@ export const Form = (props) => {
             val.error = true
           }
         })
-      }
-      setValues([...values])
+        setValues([...values])
+      }   
   }
 
   return (

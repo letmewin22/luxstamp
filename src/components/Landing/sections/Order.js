@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useCallback, useContext, useState} from 'react'
 import TextContext from '@/context/TextContext'
 import {OrderForm} from '../../OrderForm/OrderForm'
 import { signetData, stampData, facsimileData } from '@/data'
@@ -110,18 +110,18 @@ export const Order = (props) => {
         items: []
       }])
 
-  const onClickHandler = (i) => {
+  const onClickHandler = useCallback((i) => {
     items.forEach(item => {
       item.active = false
       item.items = []
-
+      console.log(forms[i])
       if (item.id === i+1) {
         item.active = true
         item.items = forms[i]
       }
     })
     setItems([...items])
-  }
+  }, [forms, items])
 
   return (
     <section id='order' className='section order'>
@@ -143,7 +143,7 @@ export const Order = (props) => {
           ))}
         </ul>
         {items.map(item => item.active && (
-          <OrderForm key={item.id} data={item.items} price={item.price} />
+          <OrderForm key={item.id} data={[...item.items]} price={item.price} />
         ))}
       </div>
     </section>

@@ -6,7 +6,7 @@ class OnChange {
     this.counter = {current: 0}
     this.exclude = []
     this.prices = [action.payload.price]
-
+    this.setFinalPrice = action.payload.setFinalPrice
     this.init()
 
     return [...this.state]
@@ -76,7 +76,7 @@ class OnChange {
       })
     })
     const arrSum = arr => arr.reduce((a,b) => a + b, 0)
-    console.log(arrSum(this.prices))
+    this.setFinalPrice(arrSum(this.prices))
   }
 
   display() {
