@@ -1,31 +1,50 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import { required } from '../required'
 
 import './Input.scss'
 
 export const Input = (props) => {
-  const [value, setValue] = useState('')
   const [error, setError] = useState(false)
-  
+  const [value, setValue] = useState('')
+  const [isPlaceholder, setIsPlaceholder] = useState(true)
+
+  useEffect(() => {
+    props.values && props.values.forEach(val => {
+      if(val.field === props.id) {
+        setValue(val.value)
+        setIsPlaceholder(val.placeholder)
+        setError(val.error)
+      }
+    })
+  }, [props.id, props.values])
+
+
   const placeholder = useRef(null)
 
   const onChangeHandler = (e) => {
-    setValue(e.target.value)
 
-    placeholder.current.classList.remove('input__placeholder--hidden')
+    if (!Boolean(props.values)) {
+      setValue(e.target.value)
+      setIsPlaceholder(true)
 
-    if (e.target.value.trim().length > 0) {
-      placeholder.current.classList.add('input__placeholder--hidden')
+      if (e.target.value.trim().length > 0) {
+        setIsPlaceholder(false)
+      }
+
+      const isRequired = required({el: e.target, props})
+      setError(isRequired)
     }
-
-    const isRequired = required({el: e.target, props})
-
-    setError(isRequired)
-
+    
     props.onChange(e)
   }
 
   const classes = ['input']
+  const placeHolderClasses = ['input__placeholder']
+
+
+  if (!isPlaceholder) {
+    placeHolderClasses.push('input__placeholder--hidden')
+  }
 
   props.classes && classes.push(props.classes)
 
@@ -54,7 +73,7 @@ export const Input = (props) => {
             {...inputProps}
           />
         )}
-        <span className='input__placeholder' ref={placeholder}>
+        <span className={placeHolderClasses.join(' ')} ref={placeholder}>
           {props.placeholder}
           {props.required && <span>*</span>}
         </span>

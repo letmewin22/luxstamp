@@ -1,5 +1,7 @@
 export const required = ({el, props}) => {
+
   let state = false
+  
   if (el.dataset.required) {
     state = false
     if (props.required && props.required.type === 'minlen') {
@@ -7,6 +9,7 @@ export const required = ({el, props}) => {
       if (isLessThanMinValue && el.value.trim().length > 0) {
         state = true
       }
+
       props.setIsActive && props.setIsActive(!isLessThanMinValue) 
     }
 

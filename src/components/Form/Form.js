@@ -1,18 +1,23 @@
 import React, {useEffect, useState, useRef} from 'react'
+import { required } from './required'
 
 import './Form.scss'
+import { fetchContacts } from '@/api/contacts'
 
 export const Form = (props) => {
   const inputs = useRef([])
 
   useEffect(() => {
     props.children.forEach((child) => {
-      if(child.props.tagName) {
-      inputs.current.push({
-        field: child.props.id,
-        value: '',
-      })
-    }
+      if (child.props.tagName) {
+        inputs.current.push({
+          field: child.props.id,
+          value: '',
+          placeholder: true,
+          required: !!child.props.required,
+          error: false
+        })
+      }
     })
   }, [props.children])
 
@@ -20,11 +25,17 @@ export const Form = (props) => {
 
   const [isActive, setIsActive] = useState(false)
 
-
   const onChange = (e) => {
-    values.forEach((el) => {
+    values.forEach((el, i) => {
       if (e.target.dataset.id === el.field) {
         el.value = e.target.value
+        el.placeholder = true
+        const inputProps = {...props.children[i].props, setIsActive}
+        const isRequired = required({el: e.target, props: inputProps})
+        el.error = isRequired
+        if(el.value.length > 0) {
+          el.placeholder = false
+        }
       }
     })
 
@@ -34,35 +45,38 @@ export const Form = (props) => {
   const classes = ['form']
   props.classes && classes.push(props.classes)
 
-  const onSubmitHandler = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault()
-    const fields = e.target.querySelectorAll('.input__field')
-    const requiredText = e.target.querySelectorAll('.input__required-text')
 
     if (isActive) {
-      console.log(values)
+      fetchContacts(values, () => {
+        values.forEach(val => {
+          val.value = ''
+          val.placeholder = true
+          if (val.required) {
+            val.error = false
+          }
+        })
+      })
+      // console.log(values)
+      
 
-      fields && fields.forEach((field, i) => {
-        if (field && field.dataset.required === 'true') {
-          field.classList.remove('input__field--error')
-        }
-        requiredText[i] && requiredText[i].classList.remove('input__required-text--active')
-      })
-    } else {
-      fields && fields.forEach((field, i) => {
-        if (field && field.dataset.required === 'true') {
-        field.classList.add('input__field--error')
+
+      } else {
+        values.forEach(val => {
+          if (val.required) {
+            val.error = true
+          }
+        })
       }
-      requiredText[i] && requiredText[i].classList.add('input__required-text--active')
-      })
-    }
+      setValues([...values])
   }
-  
+
   return (
-    <form onSubmit={onSubmitHandler} className={classes.join(' ')}>
+    <form onSubmit={onSubmit} className={classes.join(' ')}>
       {React.Children.map(props.children, (child) => {
-        if(child.props.tagName) {
-          return React.cloneElement(child, {onChange, setIsActive})
+        if (child.props.tagName) {
+          return React.cloneElement(child, {onChange, setIsActive, values})
         } else {
           return child
         }

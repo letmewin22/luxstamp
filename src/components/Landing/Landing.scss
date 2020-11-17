@@ -672,8 +672,7 @@
 
 .order__img {
   display: block;
-  max-height: 100%;
-  max-width: size(146, 100);
+  max-height: size(146, 100);
   margin-bottom: size(36, 12);
   @include media('<=#{$br2}') {
     height: 101px;

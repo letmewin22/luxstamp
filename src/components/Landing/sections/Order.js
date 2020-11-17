@@ -39,12 +39,28 @@ export const Order = (props) => {
         if (data.org) {
           const orgs = data.org.split('-')
           const orgField = forms[0][2]
+          
           const orgTypes = ['fop', 'tov', 'lawyer', 'doctor']
+          
 
           orgTypes.forEach((orgType, i) => {
             if (!orgs.includes(orgType)) {
               if (!orgField.items[i].exclude.includes(formData.items[j].key)) {
                 orgField.items[i].exclude.push(formData.items[j].key)
+              }
+            }
+          })
+        }
+
+        if (data.size) {
+          const sizesDb = data.size
+          const sizeField = forms[1][2]
+          const sizes = ['47x18', '58x22', '60x40', 'Інший розмір']
+
+          sizes.forEach((size, i) => {
+            if (size !== sizesDb) {
+              if(!sizeField.items[i].exclude.includes(formData.items[j].key)) {
+                sizeField.items[i].exclude.push(formData.items[j].key)
               }
             }
           })
@@ -77,33 +93,35 @@ export const Order = (props) => {
         price: 420,
         name: 'Печатки',
         active: false,
-        items: signetData
+        items: []
       },
       {
         id: 2,
         price: 350,
         name: 'Штампы',
         active: false,
-        items: stampData
+        items: []
       },
       {
         id: 3,
         price: 280,
         name: 'Факсимиле',
         active: false,
-        items: facsimileData
+        items: []
       }])
 
   const onClickHandler = (i) => {
     items.forEach(item => {
       item.active = false
-      item.id === i+1 && (item.active = true)
+      item.items = []
+
+      if (item.id === i+1) {
+        item.active = true
+        item.items = forms[i]
+      }
     })
     setItems([...items])
   }
-  // items.forEach(item => {
-  //   item.active && console.log(item.name)
-  // })
 
   return (
     <section id='order' className='section order'>

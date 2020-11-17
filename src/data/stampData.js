@@ -85,7 +85,7 @@ const stampData = [
         id: 1,
         key: '3MrepEDVTB',
         name: '47 х 18 мм',
-        exclude: ['VtDGTgR4ft'],
+        exclude: [],
         type: '',
         img: '',
         selected: false,
