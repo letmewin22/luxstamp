@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   padding: 15px 0;
-  background: #EBEBEB;
+  background: rgba(#EBEBEB, 0.9);
   width: 100%;
   z-index: 100;
   @include media('<=#{$br2}') {

@@ -3,10 +3,15 @@ import TextContext from '@/context/TextContext'
 
 import './Contacts.scss'
 import {Input, Form} from '../Form/'
-import { Button } from '../Button/Button'
+import {Button} from '../Button/Button'
+import {fetchContacts} from '@/api/contacts'
 
 export const Contacts = () => {
   const {footer} = useContext(TextContext)
+
+  const onSubmit = (data, cb) => {
+    fetchContacts(data, cb)
+  }
 
   return (
     <>
@@ -77,7 +82,7 @@ export const Contacts = () => {
         <section className='section if-question'>
           <div className='container section__container last'>
             <h2 className='h2'>Якщо є питання:</h2>
-            <Form classes='contacts-form'>
+            <Form classes='contacts-form' onSubmit={onSubmit}>
               <Input
                 tagName='input'
                 type='text'

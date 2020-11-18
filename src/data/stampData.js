@@ -129,6 +129,7 @@ const stampData = [
     parents: ['88EU52GQhx', 'fy7Z63Dh8T'],
     title: 'Оберіть тип оснастки',
     inputsCount: 3,
+    form: true,
     unique: true,
     visible: false,
     excludes: [],

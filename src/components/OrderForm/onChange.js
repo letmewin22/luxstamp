@@ -1,14 +1,13 @@
 class OnChange {
   constructor(state, action) {
-    
     this.state = state
     this.e = action.payload.e
     this.counter = {current: 0}
     this.exclude = []
     this.prices = [action.payload.price]
     this.setFinalPrice = action.payload.setFinalPrice
+    this.setForm = action.payload.setForm
     this.init()
-
     return [...this.state]
   }
 
@@ -26,7 +25,7 @@ class OnChange {
   setExcludes() {
     this.state[this.screenId].items.forEach((item) => {
       if (item.key === this.targetName) {
-          this.state[this.screenId].excludes = item.exclude
+        this.state[this.screenId].excludes = item.exclude
       }
     })
 
@@ -63,20 +62,31 @@ class OnChange {
   }
 
   setInputVisible() {
-    this.state.forEach(el => el.items.forEach((item) => {
-      this.setExists(item, item.key)
-    }))
+    this.state.forEach((el) =>
+      el.items.forEach((item) => {
+        this.setExists(item, item.key)
+      })
+    )
   }
 
   countPrice() {
-    this.state.forEach(el => {
+    this.state.forEach((el) => {
       el.price && this.prices.push(el.price)
-      el.items.forEach(item => {
+      el.items.forEach((item) => {
         item.selected && item.price && this.prices.push(item.price)
       })
     })
-    const arrSum = arr => arr.reduce((a,b) => a + b, 0)
+    const arrSum = (arr) => arr.reduce((a, b) => a + b, 0)
     this.setFinalPrice(arrSum(this.prices))
+  }
+
+  setFormVisibility() {
+    this.setForm(false)
+    this.state.forEach((el) => {
+      if (el.form && el.visible) {
+        this.setForm(true)
+      }
+    })
   }
 
   display() {
@@ -93,11 +103,11 @@ class OnChange {
 
     this.counter.current = this.screenId
 
-    
     this.setInputVisible()
     this.setSelect()
     this.setVisible()
     this.countPrice()
+    this.setFormVisibility()
   }
 }
 

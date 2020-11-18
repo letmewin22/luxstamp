@@ -24,7 +24,6 @@ export const fetchContacts = (data, cb) => {
       cb()
     }
     catch(error) {
-      cb()
       console.log(error)
       alert('Нажаль, виникла помилка:( Спробуйте ще раз.')
     }

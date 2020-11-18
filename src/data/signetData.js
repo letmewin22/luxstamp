@@ -130,6 +130,7 @@ const signetData = [
     parents: ['fy7Z63Dh8T'],
     title: 'Оберіть дизайн печатки',
     inputsCount: 4,
+    form: true,
     unique: true,
     visible: false,
     exists: true,

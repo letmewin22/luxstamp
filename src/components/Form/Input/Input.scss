@@ -11,6 +11,24 @@
   position: relative;
 }
 
+.input__field-wrapper--select {
+  &::before {
+    content: '';
+    background-image: url('/img/select.svg');
+    position: absolute;
+    right: size(40, 20);
+    top: 50%;
+    width: size(20, 10);
+    height: size(14, 7);
+    z-index: 100;
+    transform: translateY(-50%);
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 50%;
+  }
+}
+
 .input__field {
   background-color: white;
   font-size: inherit;
@@ -32,6 +50,13 @@
   border-radius: size(53, 33);
   min-height: size(300, 170);
   resize: none;
+}
+
+.input__field--select {
+  padding-right: size(40, 20);
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  appearance:none;
 }
 
 .input__placeholder {

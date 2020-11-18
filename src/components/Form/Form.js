@@ -1,25 +1,26 @@
 import React, {useEffect, useState, useRef} from 'react'
-import { required } from './required'
+import {required} from './required'
 
 import './Form.scss'
-import { fetchContacts } from '@/api/contacts'
+
+const createStore = (props, inputs) => {
+  props.children.forEach((child) => {
+    if (child.props.tagName) {
+      inputs.current.push({
+        field: child.props.id,
+        value: '',
+        placeholder: true,
+        required: !!child.props.required,
+        error: false,
+      })
+    }
+  })
+}
 
 export const Form = (props) => {
   const inputs = useRef([])
 
-  useEffect(() => {
-    props.children.forEach((child) => {
-      if (child.props.tagName) {
-        inputs.current.push({
-          field: child.props.id,
-          value: '',
-          placeholder: true,
-          required: !!child.props.required,
-          error: false
-        })
-      }
-    })
-  }, [props.children])
+  useEffect(createStore.bind(null, props, inputs), [])
 
   const [values, setValues] = useState(inputs.current)
 
@@ -33,7 +34,7 @@ export const Form = (props) => {
         const inputProps = {...props.children[i].props, setIsActive}
         const isRequired = required({el: e.target, props: inputProps})
         el.error = isRequired
-        if(el.value.length > 0) {
+        if (el.value.length > 0) {
           el.placeholder = false
         }
       }
@@ -49,8 +50,8 @@ export const Form = (props) => {
     e.preventDefault()
 
     if (isActive) {
-      fetchContacts(values, () => {
-        values.forEach(val => {
+      props.onSubmit(values, () => {
+        values.forEach((val) => {
           val.value = ''
           val.placeholder = true
           if (val.required) {
@@ -59,22 +60,22 @@ export const Form = (props) => {
         })
         setValues([...values])
       })
-      // console.log(values)
-      
-
-
-      } else {
-        values.forEach(val => {
-          if (val.required) {
-            val.error = true
-          }
-        })
-        setValues([...values])
-      }   
+    } else {
+      values.forEach((val) => {
+        if (val.required) {
+          val.error = true
+        }
+      })
+      setValues([...values])
+    }
   }
 
   return (
-    <form onSubmit={onSubmit} className={classes.join(' ')}>
+    <form
+      onSubmit={onSubmit}
+      className={classes.join(' ')}
+      enctype='multipart/form-data'
+    >
       {React.Children.map(props.children, (child) => {
         if (child.props.tagName) {
           return React.cloneElement(child, {onChange, setIsActive, values})
