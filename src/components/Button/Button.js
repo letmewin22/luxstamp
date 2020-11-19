@@ -1,20 +1,19 @@
 import React from 'react'
 import './Button.scss'
 
-export const Button = (props) => {
+export const Button = props => {
   const classes = ['btn']
 
   classes.push(props.classes)
   return (
     <>
-      <button 
-      type={props.type} 
-      className={classes.join(' ')}
+      <button
+        type={props.type}
+        className={classes.join(' ')}
+        onClick={props.onClick}
       >
         {props.text}
       </button>
     </>
   )
 }
-
-

@@ -5,8 +5,8 @@ import {signetData, stampData, facsimileData} from '@/data'
 import {generateItems} from '@/generateFormItems'
 import {fetchOrderForm} from '@/api/orderForm'
 
-export const Order = (props) => {
-  const {order, form} = useContext(TextContext)
+export const Order = props => {
+  const {order, form, sendForm} = useContext(TextContext)
 
   const formData = props.resource.form.read()
 
@@ -33,21 +33,21 @@ export const Order = (props) => {
   const [items, setItems] = useState([
     {
       id: 1,
-      price: 420,
+      price: formData[0].price,
       name: 'Печатки',
       active: false,
       items: [],
     },
     {
       id: 2,
-      price: 350,
+      price: formData[1].price,
       name: 'Штампы',
       active: false,
       items: [],
     },
     {
       id: 3,
-      price: 280,
+      price: formData[2].price,
       name: 'Факсимиле',
       active: false,
       items: [],
@@ -57,8 +57,8 @@ export const Order = (props) => {
   const [files, setFiles] = useState(null)
 
   const onClickHandler = useCallback(
-    (i) => {
-      items.forEach((item) => {
+    i => {
+      items.forEach(item => {
         item.active = false
         item.items = []
         if (item.id === i + 1) {
@@ -77,12 +77,12 @@ export const Order = (props) => {
       file: files,
       items: [],
     }
-    items.forEach((item) => {
+    items.forEach(item => {
       if (item.active) {
         finalData.items = item.items
       }
     })
-    fetchOrderForm(finalData, cb)
+    fetchOrderForm(finalData, cb, sendForm.errorMessage)
   }
 
   return (
@@ -105,7 +105,7 @@ export const Order = (props) => {
           ))}
         </ul>
         {items.map(
-          (item) =>
+          item =>
             item.active && (
               <OrderForm
                 onSubmit={onSubmit}

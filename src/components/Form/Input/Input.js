@@ -3,14 +3,14 @@ import {required} from '../required'
 
 import './Input.scss'
 
-export const Input = (props) => {
+export const Input = props => {
   const [error, setError] = useState(false)
   const [value, setValue] = useState('')
   const [isPlaceholder, setIsPlaceholder] = useState(true)
 
   useEffect(() => {
     props.values &&
-      props.values.forEach((val) => {
+      props.values.forEach(val => {
         if (val.field === props.id) {
           setValue(val.value)
           setIsPlaceholder(val.placeholder)
@@ -21,7 +21,7 @@ export const Input = (props) => {
 
   const placeholder = useRef(null)
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = e => {
     if (!Boolean(props.values)) {
       setValue(e.target.value)
       setIsPlaceholder(true)
@@ -77,9 +77,7 @@ export const Input = (props) => {
             {props.placeholder}
           </option>
           {props.options &&
-            props.options.map((option) => (
-              <option key={option}>{option}</option>
-            ))}
+            props.options.map(option => <option key={option}>{option}</option>)}
         </select>
       )
     } else {

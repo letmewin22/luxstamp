@@ -25,6 +25,7 @@ const signetData = [
       {
         id: 2,
         key: 'zY43nWwJ3c',
+        price: 200,
         name: 'По відбитку',
         exclude: ['88EU52GQhx'],
         type: 'with-img',

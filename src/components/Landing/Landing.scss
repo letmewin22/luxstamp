@@ -821,8 +821,15 @@
   position: absolute;
   right: 0;
   bottom: size(-50, -30);
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
+  @include media('<=#{$br2}') {
+    position: static;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
 }
 
 .order__form-download-text {

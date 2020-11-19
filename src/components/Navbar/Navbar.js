@@ -6,8 +6,7 @@ import {Logo} from '../Logo'
 import {useResize} from '../../hooks/Resizer'
 import TextContext from '../../context/TextContext'
 
-export const Navbar = (props) => {
-
+export const Navbar = props => {
   const {navigation} = useContext(TextContext)
   const [lang, setLang] = useState('uk')
 
@@ -61,11 +60,11 @@ export const Navbar = (props) => {
 
   const closeNav = () => {
     document.body.classList.remove('e-fixed')
-    setNavClasses(navClasses.filter((el) => el !== 'is-active'))
+    setNavClasses(navClasses.filter(el => el !== 'is-active'))
   }
 
-  const getLinks = (parent) => {
-    return links.map((link) => {
+  const getLinks = parent => {
+    return links.map(link => {
       return (
         <li onClick={closeNav} key={link.text} className={parent + '__li'}>
           {link.type === 'anchor' ? (
@@ -124,9 +123,7 @@ export const Navbar = (props) => {
               fill='white'
               xmlns='http://www.w3.org/2000/svg'
             >
-              <path
-                d='M26 2.275L23.725 0L13 10.725L2.275 0L0 2.275L10.725 13L0 23.725L2.275 26L13 15.275L23.725 26L26 23.725L15.275 13L26 2.275Z'
-              />
+              <path d='M26 2.275L23.725 0L13 10.725L2.275 0L0 2.275L10.725 13L0 23.725L2.275 26L13 15.275L23.725 26L26 23.725L15.275 13L26 2.275Z' />
             </svg>
           </button>
           <ul className='mobile-nav__items'>{getLinks('mobile-nav')}</ul>

@@ -4,25 +4,28 @@ require_once('phpmailer/PHPMailerAutoload.php');
 $mail = new PHPMailer;
 $mail->CharSet = 'utf-8';
 
-$name = $_POST['user_name'];
-$phone = $_POST['user_phone'];
+$data = (array) json_decode($_REQUEST["param"]);
+
+$name = strip_tags($data["name"]);
+$phone = strip_tags($data["phone"]);
+$answers = strip_tags($data["answers"]);
 
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'smtp.gmail.com';  																							// Specify main and backup SMTP servers
+$mail->Host = 'mail.adm.tools';  																							// Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'dzharuzov@mail.ru'; // Ваш логин от почты с которой будут отправляться письма
-$mail->Password = '$dk820&123'; // Ваш пароль от почты с которой будут отправляться письма
+$mail->Username = 'sales@luxstamp.com.ua'; // Ваш логин от почты с которой будут отправляться письма
+$mail->Password = '+m#R6iEx!7B5'; // Ваш пароль от почты с которой будут отправляться письма
 $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465; // TCP port to connect to / этот порт может отличаться у других провайдеров
 
-$mail->setFrom('dzharuzov@mail.ru'); // от кого будет уходить письмо?
-$mail->addAddress('mail@mail.ru');     // Кому будет уходить письмо 
-$mail->addAttachment($_FILES['upload']['tmp_name'], $_FILES['upload']['name']);    // Optional name
+$mail->setFrom('sales@luxstamp.com.ua'); // от кого будет уходить письмо?
+$mail->addAddress('hello@emotion-agency.com');     // Кому будет уходить письмо 
+// $mail->addAttachment($_FILES['upload']['tmp_name'], $_FILES['upload']['name']);    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = 'Заявка с тестового сайта';
-$mail->Body    = '' .$name . ' оставил заявку, его телефон ' .$phone. '<br>Почта этого пользователя: ' .$email;
+$mail->Subject = 'Заявка с сайта';
+$mail->Body    = $name.' '.$phone.' '.$answers;
 $mail->AltBody = '';
 
 if(!$mail->send()) {

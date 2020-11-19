@@ -14,7 +14,7 @@ export const OrderForm = ({price, data, onSubmit, filesState}) => {
   const [form, setForm] = useState(false)
 
   const onChange = useCallback(
-    (e) =>
+    e =>
       dispatch({
         type: 'change',
         payload: {
@@ -30,7 +30,7 @@ export const OrderForm = ({price, data, onSubmit, filesState}) => {
   return (
     <div className='order__form-wrapper'>
       {state.map(
-        (step) =>
+        step =>
           step.visible &&
           step.exists && (
             <motion.div
@@ -49,7 +49,7 @@ export const OrderForm = ({price, data, onSubmit, filesState}) => {
                 }
               >
                 {step.items.map(
-                  (item) =>
+                  item =>
                     item.exists && (
                       <Checkbox
                         onChange={onChange}

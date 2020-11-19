@@ -1,9 +1,15 @@
 import React, {useContext} from 'react'
 import {Button} from '../../Button/Button'
 import TextContext from '@/context/TextContext'
+import {useHistory} from 'react-router-dom'
 
 export const CallToAction = () => {
   const {cta} = useContext(TextContext)
+  const history = useHistory()
+
+  const toContacts = () => {
+    history.push('/contacts')
+  }
 
   return (
     <section className='section call-to-action dg'>
@@ -25,7 +31,11 @@ export const CallToAction = () => {
             <div className='dg__left'>
               <div className='dg__left-content'>
                 <div className='section__line mob-hidden' />
-                <Button text={cta.button} classes='call-to-action__btn' />
+                <Button
+                  text={cta.button}
+                  classes='call-to-action__btn'
+                  onClick={toContacts}
+                />
               </div>
             </div>
             <div className='dg__right'>

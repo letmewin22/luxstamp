@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetchOrderForm = (data, cb) => {
+export const fetchOrderForm = (data, cb, text) => {
   const apiUrl = '/api/order'
 
   const finalData = {
@@ -17,13 +17,22 @@ export const fetchOrderForm = (data, cb) => {
     return data.form[i] && (finalData[el] = data.form[i].value)
   })
 
-  data.items.map((elem) => {
-    return elem.items.forEach((el) => {
+  data.items.map((elem, i) => {
+    return elem.items.forEach(el => {
       if (el.selected) {
-        finalData.answers.push({title: elem.title, value: el.name})
+        if (finalData.answers[i] && finalData.answers[i].title) {
+          finalData.answers[i].value.push(el.name)
+        } else {
+          finalData.answers.push({title: elem.title, value: [el.name]})
+        }
       }
     })
   })
+  finalData.answers.map(answer => {
+    return (answer.value = answer.value.join(', '))
+  })
+
+  console.log(finalData)
 
   const formData = new FormData()
   formData.append('file', data.file)
@@ -42,7 +51,7 @@ export const fetchOrderForm = (data, cb) => {
       cb()
     } catch (error) {
       console.log(error)
-      alert('Нажаль, виникла помилка:( Спробуйте ще раз.')
+      alert(text)
     }
   }
 

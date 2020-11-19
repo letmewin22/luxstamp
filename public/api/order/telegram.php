@@ -3,7 +3,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $data = (array) json_decode($_REQUEST["param"]);
 
 require_once('./botData.php');
-require_once('./telegramFile.php');
 
 $name = strip_tags($data["name"]);
 $phone = strip_tags($data["phone"]);
@@ -12,7 +11,6 @@ $delivery = strip_tags($data["delivery"]);
 $messanger = strip_tags($data["messanger"]);
 $comment = strip_tags($data["comment"]);
 $answers = $data["answers"];
-
 
 $nameFieldset = "Ім'я: ";
 $phoneFieldset = "Телефон: ";
@@ -46,9 +44,6 @@ foreach($arr as $key => $value) {
 };
 
 $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$txt}","r");
-
-// SendTelFile(file, $token, $chat_id);
-
 
 
 if ($sendToTelegram) {

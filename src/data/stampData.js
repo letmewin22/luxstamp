@@ -18,7 +18,7 @@ const stampData = [
         name: 'Новий',
         exclude: [],
         type: 'with-img',
-        img: '/img/order/form/1.png',
+        img: '/img/order/2.png',
         selected: false,
         exists: true,
       },
@@ -26,9 +26,10 @@ const stampData = [
         id: 2,
         key: 'zY43nWwJ3c',
         name: 'По відбитку',
+        price: 100,
         exclude: [],
         type: 'with-img',
-        img: '/img/order/form/2.png',
+        img: '/img/order/2.png',
         selected: false,
         exists: true,
       },
@@ -78,7 +79,8 @@ const stampData = [
     exists: true,
     excludes: [],
     content: 'download-screen',
-    contentText: 'Завантажте фото або скан-копію витягу з ЕДРПОУ/свідоцтво адвоката/диплом лікаря',
+    contentText:
+      'Завантажте фото або скан-копію витягу з ЕДРПОУ/свідоцтво адвоката/диплом лікаря',
     contentBtn: 'Завантажити документ',
     items: [
       {
