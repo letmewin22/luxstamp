@@ -97,6 +97,7 @@ export const OrderFinalScreen = ({finalPrice, onSubmit}) => {
               classes={input.classes && input.classes}
               required={input.required && input.required}
               requiredText={input.requiredText && input.requiredText}
+              text={input.text && input.text}
               options={input.options && input.options}
             />
           ))}

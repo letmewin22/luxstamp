@@ -28,26 +28,29 @@ export const fetchOrderForm = (data, cb, text) => {
       }
     })
   })
-  finalData.answers.map(answer => {
-    return (answer.value = answer.value.join(', '))
-  })
 
-  console.log(finalData)
+  finalData.answers = JSON.stringify(finalData.answers)
 
   const formData = new FormData()
+
   formData.append('file', data.file)
+
+  Object.keys(finalData).map(el => {
+    return formData.append(el, finalData[el])
+  })
 
   const request = async () => {
     try {
       await axios({
         method: 'post',
-        url: apiUrl + '/telegram.php',
-        data: 'param=' + JSON.stringify(finalData),
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+        url: apiUrl + '/mail/mail.php',
+        data: formData,
       })
-      await axios.post(apiUrl + '/telegramFile.php', formData)
+      await axios({
+        method: 'post',
+        url: apiUrl + '/telegram.php',
+        data: formData,
+      })
       cb()
     } catch (error) {
       console.log(error)

@@ -1,44 +1,85 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import TextContext from '@/context/TextContext'
 
 import './Contacts.scss'
 import {Input, Form} from '../Form/'
 import {Button} from '../Button/Button'
 import {fetchContacts} from '@/api/contacts'
+import LangContext from '@/context/LangContext'
+
+const localizeForm = (inputs, contacts, setInputs) => {
+  inputs.forEach((input, i) => {
+    console.log(contacts)
+    Object.keys(input).map(el => {
+      return contacts.inputs[i][el] && (input[el] = contacts.inputs[i][el])
+    })
+  })
+  setInputs([...inputs])
+}
 
 export const Contacts = () => {
-  const {footer} = useContext(TextContext)
+  const {footer, contacts} = useContext(TextContext)
+  const lang = useContext(LangContext)
+
+  const [inputs, setInputs] = useState([
+    {
+      tagName: 'input',
+      type: 'text',
+      id: 'name',
+      placeholder: 'Ваше ім’я',
+      classes: 'contacts-form__input',
+    },
+    {
+      tagName: 'input',
+      type: 'tel',
+      id: 'phone',
+      placeholder: 'Номер телефону',
+      classes: 'contacts-form__input',
+      required: {type: 'minlen', minValue: 10},
+      requiredText: 'Некоректний номер',
+    },
+    {
+      tagName: 'input',
+      type: 'textarea',
+      id: 'textarea',
+      placeholder: 'Хочу печатку за 1 годину!',
+      text: 'Коментар до замовлення',
+      classes: 'contacts-form__input contacts-form__input--full',
+    },
+  ])
+
+  useEffect(localizeForm.bind(null, inputs, contacts.form, setInputs), [
+    contacts,
+  ])
 
   const onSubmit = (data, cb) => {
-    fetchContacts(data, cb)
+    fetchContacts(data, cb, contacts.form.errorMessage)
   }
 
   return (
     <>
       <header className='contacts-header'>
         <div className='container contacts-header__container'>
-          <h1 className='h1'>Контакти</h1>
+          <h1 className='h1'>{lang === 'ru' ? 'Контакты' : 'Контакти'}</h1>
           <div className='contacts-header__items'>
             <div className='contacts-header__item'>
               <a href='tel:+380682717778'>+38 (068) 271 7778</a>
               <a href='mailto:luxstampif@gmail.com'>luxstampif@gmail.com</a>
             </div>
             <div className='contacts-header__item'>
-              <h4>Графік роботи:</h4>
-              <span>Пн-Пт з 09.00 до 17.00</span>
-              <span>Обід 13.00-14.00</span>
-              <span>Субота - вихідний</span>
-              <span>Неділя - вихідний</span>
+              <h4>{lang === 'ru' ? 'График работы' : 'Графік роботи'}:</h4>
+              <span>Пн-Пт {lang === 'ru' ? 'с' : 'з'} 09.00 до 17.00</span>
+              <span>{lang === 'ru' ? 'Обед' : 'Обід'} 13.00-14.00</span>
+              <span>
+                {lang === 'ru' ? 'Суббота - виходной' : 'Субота - вихідний'}
+              </span>
+              <span>
+                {lang === 'ru' ? 'Воскресенье - виходной' : 'Неділя - вихідний'}
+              </span>
             </div>
             <div className='contacts-header__item'>
-              <span>
-                Ми розуміємо специфіку роботи наших клієнтів, а саме
-                ненормованість робочого дня, і йдемо на зустріч!
-              </span>
-              <span>
-                За Вашим проханням можемо прийти швидше, або затриматись. Просто
-                повідомте нас!
-              </span>
+              <span>{contacts.text1}</span>
+              <span>{contacts.text2}</span>
             </div>
           </div>
         </div>
@@ -81,39 +122,27 @@ export const Contacts = () => {
         </section>
         <section className='section if-question'>
           <div className='container section__container last'>
-            <h2 className='h2'>Якщо є питання:</h2>
+            <h2 className='h2'>{contacts.form.title}</h2>
             <Form classes='contacts-form' onSubmit={onSubmit}>
-              <Input
-                tagName='input'
-                type='text'
-                id='name'
-                placeholder='Ваше ім’я'
-                classes='contacts-form__input'
-              />
-              <Input
-                tagName='input'
-                type='tel'
-                id='phone'
-                placeholder='Номер телефону'
-                classes='contacts-form__input'
-                required={{type: 'minlen', minValue: 10}}
-                requiredText={'Некорректний номер'}
-              />
-              <Input
-                tagName='input'
-                type='textarea'
-                id='textarea'
-                placeholder='Хочу печатку за 1 годину!'
-                text='Питання'
-                classes='contacts-form__input contacts-form__input--full'
-              />
+              {inputs.map(input => (
+                <Input
+                  key={input.placeholder}
+                  tagName={input.tagName && input.tagName}
+                  type={input.type && input.type}
+                  id={input.id && input.id}
+                  placeholder={input.placeholder && input.placeholder}
+                  classes={input.classes && input.classes}
+                  required={input.required && input.required}
+                  requiredText={input.requiredText && input.requiredText}
+                  text={input.text && input.text}
+                />
+              ))}
               <div className='form__bottom'>
                 <p>
-                  <span>*</span> якщо не знайшли потрібний дизайн або оснащення
-                  зв'яжіться з нами і ми вирішимо це питання.
+                  <span>*</span> {contacts.form.note}
                 </p>
                 <Button
-                  text={'Замовити печатку'}
+                  text={contacts.form.button}
                   classes='form__btn'
                   type='submit'
                 />

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const fetchContacts = (data, cb) => {
+export const fetchContacts = (data, cb, text) => {
   const tUrl = '/api/contacts/telegram.php'
   const mUrl = '/api/contacts/mail/mail.php'
 
@@ -33,7 +33,7 @@ export const fetchContacts = (data, cb) => {
       cb()
     } catch (error) {
       console.log(error)
-      alert('Нажаль, виникла помилка:( Спробуйте ще раз.')
+      alert(text)
     }
   }
 

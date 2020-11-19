@@ -4,25 +4,43 @@ require_once('phpmailer/PHPMailerAutoload.php');
 $mail = new PHPMailer;
 $mail->CharSet = 'utf-8';
 
-$data = (array) json_decode($_REQUEST["param"]);
+$data = $_REQUEST;
 
 $name = strip_tags($data["name"]);
 $phone = strip_tags($data["phone"]);
-$answers = strip_tags($data["answers"]);
+$city = strip_tags($data["city"]);
+$delivery = strip_tags($data["delivery"]);
+$messanger = strip_tags($data["messanger"]);
+$comment = strip_tags($data["comment"]);
+$answers = (array) json_decode($data["answers"]);
 
 $nameFieldset = "Ім'я: ";
 $phoneFieldset = "Телефон: ";
-$answerFieldset = "Питання: ";
+$cityFieldset = "Місто: ";
+$deliveryFieldset = "Вид доставки: ";
+$messangerFieldset = "Де зручніше тримати зв'язок: ";
+$commentFieldset = "Коментар: ";
+$answerFieldset = "Відповіді: ";
 
 $arr = array(
-    $nameFieldset => $name,
-    $phoneFieldset => $phone,
-    $answerFieldset => $answers,
+  $nameFieldset => $name,
+  $phoneFieldset => $phone,
+  $cityFieldset => $city,
+  $deliveryFieldset => $delivery,
+  $messangerFieldset => $messanger,
+  $commentFieldset => $comment,
+  "<br>".$answerFieldset => "<br>"
 );
 
-  foreach($arr as $key => $value) {
-    $txt .= "<strong>".$key."</strong>".$value."<br>";
-  };
+foreach ($answers as $value) {
+  $answer = (array) $value;
+  $joinAswer = implode("<br>", $answer["value"]);
+  $arr = array_merge($arr, array($answer["title"]=> "<br>".$joinAswer."<br>"));
+}
+
+foreach($arr as $key => $value) {
+  $txt .= "<strong>".$key."</strong>".$value."<br>";
+};
 
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -35,7 +53,7 @@ $mail->Port = 465; // TCP port to connect to / этот порт может от
 
 $mail->setFrom('sales@luxstamp.com.ua'); // от кого будет уходить письмо?
 $mail->addAddress('lkosteckiy5@gmail.com');     // Кому будет уходить письмо 
-// $mail->addAttachment($_FILES['upload']['tmp_name'], $_FILES['upload']['name']);    // Optional name
+$mail->addAttachment($_FILES['file']['tmp_name'], $_FILES['file']['name']);    // Optional name
 $mail->isHTML(true);                                  // Set email format to HTML
 
 $mail->Subject = 'Заявка з сайту LuxStamp';

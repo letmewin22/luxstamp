@@ -29,7 +29,7 @@ const stampData = [
         price: 100,
         exclude: [],
         type: 'with-img',
-        img: '/img/order/2.png',
+        img: '/img/order/form/3.png',
         selected: false,
         exists: true,
       },

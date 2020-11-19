@@ -21,7 +21,7 @@ $arr = array(
 );
 
 
-var_dump($arr);
+// var_dump($arr);
     
 foreach($arr as $key => $value) {
   $txt .= "<b>".$key."</b>".$value."%0A";

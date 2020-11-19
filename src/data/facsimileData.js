@@ -29,7 +29,7 @@ const facsimileData = [
         price: 150,
         exclude: ['fy7Z63Dh8T', '7X3NDca3vz', 'GqH6cnUxyV'],
         type: 'with-img',
-        img: '/img/order/3.png',
+        img: '/img/order/form/4.png',
         selected: false,
         exists: true,
       },
