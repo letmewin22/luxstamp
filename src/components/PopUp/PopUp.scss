@@ -1,0 +1,92 @@
+@import '../../scss/helpers/all.scss';
+
+.pop-up {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+
+.pop-up--active {
+  opacity: 1;
+  visibility: visible;
+  .pop-up__item {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.pop-up__overlay {
+  background-color: rgba(#3F3D56, 0.8);
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.pop-up__item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background-color: white;
+  padding: size(73, 38) size(42, 22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: size(629, 335);
+  transition: transform .3s ease;
+}
+
+.pop-up__icon {
+  max-width: size(108, 57);
+  svg {
+    max-width: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.pop-up__big-text {
+  line-height: 1em;
+  @include medium;
+  font-size: size(40, 21);
+  margin-top: size(32, 15);
+}
+
+.pop-up__text {
+  font-size: size(20, 14);
+  margin-top: size(20, 10);
+  line-height: 1.2em;
+}
+
+.pop-up__close {
+  background-color: transparent;
+  position: absolute;
+  top: size(16, 8);
+  right: size(16, 8);
+  z-index: 100;
+  width: size(24, 20);
+  height: size(24, 20);
+  svg {
+    max-width: 100%;
+    display: block;
+    transition: fill .3s ease;
+  }
+  @include media('>=#{$br2}') {
+    &:hover {
+      svg {
+        fill: $accent;
+      }
+    }
+  }
+}

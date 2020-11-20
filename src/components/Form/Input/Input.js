@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, {useState, useRef, useEffect, useCallback} from 'react'
 import {required} from '../required'
 
 import './Input.scss'
@@ -21,21 +21,24 @@ export const Input = props => {
 
   const placeholder = useRef(null)
 
-  const onChangeHandler = e => {
-    if (!Boolean(props.values)) {
-      setValue(e.target.value)
-      setIsPlaceholder(true)
+  const onChangeHandler = useCallback(
+    e => {
+      if (!Boolean(props.values)) {
+        setValue(e.target.value)
+        setIsPlaceholder(true)
 
-      if (e.target.value.trim().length > 0) {
-        setIsPlaceholder(false)
+        if (e.target.value.trim().length > 0) {
+          setIsPlaceholder(false)
+        }
+
+        const isRequired = required({el: e.target, props})
+        setError(isRequired)
       }
 
-      const isRequired = required({el: e.target, props})
-      setError(isRequired)
-    }
-
-    props.onChange(e)
-  }
+      props.onChange(e)
+    },
+    [props]
+  )
 
   const classes = ['input']
   const placeHolderClasses = ['input__placeholder']

@@ -2,8 +2,7 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $data = (array) json_decode($_REQUEST["param"]);
 
-$token = '1416265840:AAFFHErI16_6us8FiYUVU-R4hdCRESQn3Dk';
-$chat_id = '-416696206';
+require_once('../botData.php');
 
 $name = strip_tags($data["name"]);
 $phone = strip_tags($data["phone"]);

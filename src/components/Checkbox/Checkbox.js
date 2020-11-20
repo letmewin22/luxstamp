@@ -1,14 +1,16 @@
 import React from 'react'
 import {Check} from './Check'
 
-export const Checkbox = (props) => {
+export const Checkbox = props => {
   return (
     <label className='order__custom-checkbox'>
-      {props.type === 'with-img' && <img className='order__img' src={props.img} alt='' />}
+      {props.type === 'with-img' && (
+        <img className='order__img' src={props.img} alt='' />
+      )}
       {props.type === 'card' && (
         <div className='order__card'>
           <img className='order__card-img' src={props.img} alt='' />
-          <div className="order__card-price">{props.price} грн</div>
+          <div className='order__card-price'>{props.price} грн</div>
         </div>
       )}
       <input
@@ -24,12 +26,12 @@ export const Checkbox = (props) => {
         <div className='order__fake-checkbox'>
           <Check />
         </div>
-        <span className='order__fake-checkbox-text'>{props.name}</span>
+        <span className='order__fake-checkbox-text'>
+          {props.name} {props.parent === 'GqH6cnUxyV' && props.price + ' грн'}
+        </span>
       </div>
       {props.type === 'with-text' && (
-        <span className='order__small-text'>
-          {props.typeText}
-        </span>
+        <span className='order__small-text'>{props.typeText}</span>
       )}
     </label>
   )

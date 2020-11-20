@@ -2,8 +2,9 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $data = $_REQUEST;
 
-require_once('./botData.php');
+require_once('../../botData.php');
 
+$type = strip_tags($data["type"]);
 $name = strip_tags($data["name"]);
 $phone = strip_tags($data["phone"]);
 $city = strip_tags($data["city"]);
@@ -11,7 +12,9 @@ $delivery = strip_tags($data["delivery"]);
 $messanger = strip_tags($data["messanger"]);
 $comment = strip_tags($data["comment"]);
 $answers = (array) json_decode($data["answers"]);
+$price = strip_tags($data["price"]);
 
+$typeFieldset = "Вид виробу: ";
 $nameFieldset = "Ім'я: ";
 $phoneFieldset = "Телефон: ";
 $cityFieldset = "Місто: ";
@@ -19,15 +22,18 @@ $deliveryFieldset = "Вид доставки: ";
 $messangerFieldset = "Де зручніше тримати зв'язок: ";
 $commentFieldset = "Коментар: ";
 $answerFieldset = "Відповіді: ";
+$priceFieldset = "Сума до сплати: ";
 
 $arr = array(
+  $typeFieldset => $type."%0A",
   $nameFieldset => $name,
   $phoneFieldset => $phone,
   $cityFieldset => $city,
   $deliveryFieldset => $delivery,
   $messangerFieldset => $messanger,
   $commentFieldset => $comment,
-  "%0A".$answerFieldset => "%0A"
+  "%0A".$priceFieldset => $price,
+  "%0A".$answerFieldset => "%0A",
 );
 
 

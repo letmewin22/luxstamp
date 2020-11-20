@@ -9,7 +9,6 @@ import LangContext from '@/context/LangContext'
 
 const localizeForm = (inputs, contacts, setInputs) => {
   inputs.forEach((input, i) => {
-    console.log(contacts)
     Object.keys(input).map(el => {
       return contacts.inputs[i][el] && (input[el] = contacts.inputs[i][el])
     })
@@ -52,8 +51,8 @@ export const Contacts = () => {
     contacts,
   ])
 
-  const onSubmit = (data, cb) => {
-    fetchContacts(data, cb, contacts.form.errorMessage)
+  const onSubmit = (data, cb, loader) => {
+    fetchContacts(data, cb, contacts.form.errorMessage, loader)
   }
 
   return (
@@ -71,10 +70,10 @@ export const Contacts = () => {
               <span>Пн-Пт {lang === 'ru' ? 'с' : 'з'} 09.00 до 17.00</span>
               <span>{lang === 'ru' ? 'Обед' : 'Обід'} 13.00-14.00</span>
               <span>
-                {lang === 'ru' ? 'Суббота - виходной' : 'Субота - вихідний'}
+                {lang === 'ru' ? 'Суббота — выходной' : 'Субота — вихідний'}
               </span>
               <span>
-                {lang === 'ru' ? 'Воскресенье - виходной' : 'Неділя - вихідний'}
+                {lang === 'ru' ? 'Воскресенье — выходной' : 'Неділя — вихідний'}
               </span>
             </div>
             <div className='contacts-header__item'>

@@ -41,7 +41,7 @@ export const Order = props => {
     {
       id: 2,
       price: formData[1].price,
-      name: 'Штампы',
+      name: 'Штампи',
       active: false,
       items: [],
     },
@@ -71,18 +71,22 @@ export const Order = props => {
     [forms, items]
   )
 
-  const onSubmit = (data, cb) => {
+  const onSubmit = (data, cb, loader) => {
+    const price = document.querySelector('.order__final-price span').innerText
     const finalData = {
       form: data,
       file: files,
+      type: '',
+      price,
       items: [],
     }
     items.forEach(item => {
       if (item.active) {
         finalData.items = item.items
+        finalData.type = item.name
       }
     })
-    fetchOrderForm(finalData, cb, sendForm.errorMessage)
+    fetchOrderForm(finalData, cb, sendForm.errorMessage, loader)
   }
 
   return (

@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-export const fetchOrderForm = (data, cb, text) => {
+export const fetchOrderForm = (data, cb, text, loader) => {
+  loader(true)
+
   const apiUrl = '/api/order'
 
   const finalData = {
@@ -10,9 +12,10 @@ export const fetchOrderForm = (data, cb, text) => {
     delivery: '',
     messanger: '',
     comment: '',
+    type: data.type,
+    price: data.price,
     answers: [],
   }
-
   Object.keys(finalData).map((el, i) => {
     return data.form[i] && (finalData[el] = data.form[i].value)
   })
@@ -48,13 +51,15 @@ export const fetchOrderForm = (data, cb, text) => {
       })
       await axios({
         method: 'post',
-        url: apiUrl + '/telegram.php',
+        url: apiUrl + '/telegram/telegram.php',
         data: formData,
       })
       cb()
     } catch (error) {
-      console.log(error)
+      console.error(error)
       alert(text)
+    } finally {
+      loader(false)
     }
   }
 

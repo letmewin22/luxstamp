@@ -1,6 +1,6 @@
 <?php
 if(isset($_FILES['file']['name'])){
-  require_once('./botData.php');
+  require_once('../../botData.php');
   require_once('./sendFile.php');
   // file name
   $filename = $_FILES['file']['name'];
