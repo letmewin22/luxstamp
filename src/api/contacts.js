@@ -32,6 +32,7 @@ export const fetchContacts = (data, cb, text, loader) => {
         },
       })
       cb()
+      window.dataLayer.push({event: 'form_sent'})
     } catch (error) {
       console.error(error)
       alert(text)

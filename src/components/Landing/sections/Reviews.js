@@ -3,8 +3,7 @@ import gsap from 'gsap'
 import {SliderArrow} from '../../SliderArrow'
 import TextContext from '@/context/TextContext'
 
-export const Reviews = (props) => {
-
+export const Reviews = props => {
   const reviews = props.resource.reviews.read()
 
   const {clientsReviews} = useContext(TextContext)
@@ -14,14 +13,14 @@ export const Reviews = (props) => {
   const [current, setCurrent] = useState(0)
   const slide = useRef(null)
 
-  const slideAnimation = (cb) => {
-    gsap.to(slide.current, { 
-      duration: 0.25, 
+  const slideAnimation = cb => {
+    gsap.to(slide.current, {
+      duration: 0.25,
       opacity: 0,
       onComplete: () => {
         cb()
         gsap.fromTo(slide.current, {opacity: 0}, {duration: 0.25, opacity: 1})
-      }
+      },
     })
   }
 
@@ -43,9 +42,7 @@ export const Reviews = (props) => {
         <div className='section__line mob-hidden' />
         <div className='dg__top'>
           <div className='dg__left'>
-            <p className='dg__top-text'>
-              {clientsReviews.descriptor}
-            </p>
+            <p className='dg__top-text'>{clientsReviews.descriptor}</p>
           </div>
           <div className='dg__right'>
             <div className='dg__right-content'>
@@ -61,12 +58,14 @@ export const Reviews = (props) => {
                 <div className='section__line mob-hidden' />
                 <nav className='reviews__slider-nav'>
                   <button
+                    aria-label='Кнопка слайдера влево'
                     onClick={prevSlide}
                     className='reviews__slider-nav-item reviews__slider-nav-item--left'
                   >
                     <SliderArrow />
                   </button>
                   <button
+                    aria-label='Кнопка слайдера вправо'
                     onClick={nextSlide}
                     className='reviews__slider-nav-item reviews__slider-nav-item--right'
                   >

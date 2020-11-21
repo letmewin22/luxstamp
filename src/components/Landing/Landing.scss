@@ -847,6 +847,9 @@
   span {
     color: $accent;
   }
+  @include media('<=#{$br4}') {
+    width: 100%;
+  }
 }
 
 .order__small-text {
