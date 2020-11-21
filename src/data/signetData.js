@@ -132,6 +132,7 @@ const signetData = [
     title: 'Оберіть дизайн печатки',
     inputsCount: 4,
     form: true,
+    class: 'mob-full',
     unique: true,
     visible: false,
     exists: true,

@@ -33,9 +33,8 @@ export const fetchContacts = (data, cb, text, loader) => {
       })
       cb()
     } catch (error) {
-      cb()
-      // console.error(error)
-      // alert(text)
+      console.error(error)
+      alert(text)
     } finally {
       loader(false)
     }

@@ -6,11 +6,6 @@ import App from './App'
 import './scss/index.scss'
 import * as serviceWorker from './serviceWorker'
 
-/**
-* @todo
-1. Сделать сообщение о том, что форма успешно отправлена
-* */
-
 ReactDOM.render(
   <BrowserRouter>
     <App />

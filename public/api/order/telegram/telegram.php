@@ -24,6 +24,8 @@ $commentFieldset = "Коментар: ";
 $answerFieldset = "Відповіді: ";
 $priceFieldset = "Сума до сплати: ";
 
+var_dump($answers);
+
 $arr = array(
   $typeFieldset => $type."%0A",
   $nameFieldset => $name,

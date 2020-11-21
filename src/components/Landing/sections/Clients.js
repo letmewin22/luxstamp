@@ -1,9 +1,11 @@
 import React, {useContext, useState} from 'react'
 import TextContext from '@/context/TextContext'
 import {useResize} from '@/hooks/Resizer'
+import LangContext from '@/context/LangContext'
 
 export const Clients = () => {
   const {clients} = useContext(TextContext)
+  const lang = useContext(LangContext)
 
   const clientsImgs = [
     {img: '/img/clients/1.png'},
@@ -27,9 +29,13 @@ export const Clients = () => {
         <h2 className='h2'>{clients.title}</h2>
         <p className='clients-description'>{clients.descriptor}</p>
       </div>
-      {isMobile && <span className='clients__swipe-to'>свайпайте вбік</span>}
+      {isMobile && (
+        <span className='clients__swipe-to'>
+          {lang === 'ru' ? 'листайте вбок' : 'свайпайте вбік'}
+        </span>
+      )}
       <ul className='clients__items'>
-        {clientsImgs.map((client) => {
+        {clientsImgs.map(client => {
           return (
             <li key={client.img} className='clients__li'>
               <img src={client.img} alt='client' />

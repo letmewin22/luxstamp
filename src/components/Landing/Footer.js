@@ -30,7 +30,13 @@ export const Footer = () => {
                     </span>
                     <p className='representation__li-text'>
                       <span>
-                        <a href={el.googleMaps}>{el.address}</a>
+                        <a
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          href={el.googleMaps}
+                        >
+                          {el.address}
+                        </a>
                       </span>
                       <span>
                         <a href={'tel:' + el.phone.replace(/\D/gm, '')}>
@@ -48,10 +54,22 @@ export const Footer = () => {
           </div>
           <ul className='social'>
             <li className='social__item'>
-              <a href='/'>instagram</a>
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href='https://www.instagram.com/luxstamp_if/'
+              >
+                instagram
+              </a>
             </li>
             <li className='social__item'>
-              <a href='/'>facebook</a>
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href='https://www.facebook.com/luxstampIF/'
+              >
+                facebook
+              </a>
             </li>
           </ul>
           <Button

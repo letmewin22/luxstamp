@@ -101,7 +101,13 @@ export const Contacts = () => {
                       </span>
                       <p className='representation__li-text'>
                         <span>
-                          <a href={el.googleMaps}>{el.address}</a>
+                          <a
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            href={el.googleMaps}
+                          >
+                            {el.address}
+                          </a>
                         </span>
                         <span>
                           <a href={'tel:' + el.phone.replace(/\D/gm, '')}>

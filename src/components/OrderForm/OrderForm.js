@@ -45,7 +45,10 @@ export const OrderForm = ({price, data, onSubmit, filesState}) => {
               <h3 className='h3 order__h3'>{step.title}</h3>
               <div
                 className={
-                  'order__form-inputs order__form-inputs--' + step.inputsCount
+                  'order__form-inputs order__form-inputs--' +
+                  step.inputsCount +
+                  ' ' +
+                  step.class
                 }
               >
                 {step.items.map(

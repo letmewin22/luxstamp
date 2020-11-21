@@ -769,6 +769,14 @@
       grid-template-columns: repeat(1, 1fr);
     }
   }
+  &.mob-full {
+    @include media('<=#{$br4}') {
+      grid-template-columns: repeat(2, 1fr);
+      .order__fake-checkbox-text {
+        flex: auto;
+      }
+    }
+  }
 }
 
 .order__form-step {

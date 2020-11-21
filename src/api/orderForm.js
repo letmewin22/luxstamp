@@ -20,17 +20,17 @@ export const fetchOrderForm = (data, cb, text, loader) => {
     return data.form[i] && (finalData[el] = data.form[i].value)
   })
 
-  data.items.map((elem, i) => {
-    return elem.items.forEach(el => {
+  data.items.map(elem => finalData.answers.push({title: elem.title, value: []}))
+
+  finalData.answers.forEach((elem, i) => {
+    data.items[i].items.forEach(el => {
       if (el.selected) {
-        if (finalData.answers[i] && finalData.answers[i].title) {
-          finalData.answers[i].value.push(el.name)
-        } else {
-          finalData.answers.push({title: elem.title, value: [el.name]})
-        }
+        elem.value.push(el.name)
       }
     })
   })
+
+  finalData.answers = finalData.answers.filter(el => el.value.length !== 0)
 
   finalData.answers = JSON.stringify(finalData.answers)
 
