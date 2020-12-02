@@ -697,6 +697,7 @@
   margin-bottom: size(36, 12);
   @include media('<=#{$br2}') {
     height: 101px;
+    max-width: 100%;
   }
 }
 
