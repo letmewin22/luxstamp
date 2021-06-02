@@ -1,16 +1,24 @@
 import React, {useState, useRef, useContext, useEffect} from 'react'
-import {Link} from 'react-router-dom'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
-import './Navbar.scss'
+import {Link, useLocation} from 'react-router-dom'
+import {NavLink} from '../NavLink'
 import {Logo} from '../Logo'
 import {useResize} from '../../hooks/Resizer'
 import TextContext from '../../context/TextContext'
+import './Navbar.scss'
 
 export const Navbar = props => {
   const {navigation} = useContext(TextContext)
   const [lang, setLang] = useState('uk')
 
   const langText = lang === 'uk' ? 'Ru' : 'Ua'
+
+  let location = useLocation()
+  let [anchorType, setAnchorType] = useState('anchor')
+
+  useEffect(() => {
+    const type = location.pathname === '/' ? 'anchor' : 'anchor-from-dif-page'
+    setAnchorType(type)
+  }, [location, anchorType])
 
   useEffect(() => {
     setLang(JSON.parse(localStorage.getItem('lang') || '"uk"'))
@@ -20,25 +28,25 @@ export const Navbar = props => {
     {
       href: '#order',
       text: navigation.order,
-      type: 'anchor',
+      type: anchorType,
     },
     {
       href: '#advantages',
       text: navigation.advantages,
-      type: 'anchor',
+      type: anchorType,
     },
     {
       href: '#clients',
       text: navigation.clients,
-      type: 'anchor',
+      type: anchorType,
     },
     {
       href: '#delivery',
       text: navigation.delivery,
-      type: 'anchor',
+      type: anchorType,
     },
     {
-      href: '/',
+      href: '/contacts',
       text: navigation.contacts,
       type: 'link',
     },
@@ -67,15 +75,7 @@ export const Navbar = props => {
     return links.map(link => {
       return (
         <li onClick={closeNav} key={link.text} className={parent + '__li'}>
-          {link.type === 'anchor' ? (
-            <AnchorLink href={link.href} className={parent + '__link'}>
-              {link.text}
-            </AnchorLink>
-          ) : (
-            <Link to='/contacts' className={parent + '__link'}>
-              {link.text}
-            </Link>
-          )}
+          <NavLink link={link} className={parent + '__link'} />
         </li>
       )
     })

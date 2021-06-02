@@ -47,7 +47,7 @@ foreach ($answers as $value) {
 
 
 foreach($arr as $key => $value) {
-  $txt .= "<b>".$key."</b>".$value."%0A";
+  $txt .= "%0A<b>".$key."</b>".$value."%0A";
 };
 
 

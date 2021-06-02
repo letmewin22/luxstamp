@@ -34,7 +34,11 @@ export const Contacts = () => {
       id: 'phone',
       placeholder: 'Номер телефону',
       classes: 'contacts-form__input',
-      required: {type: 'minlen', minValue: 10},
+      required: [
+        {type: 'minlen', minValue: 10},
+        {type: 'maxlen', maxValue: 16},
+        {type: 'phone'},
+      ],
       requiredText: 'Некоректний номер',
     },
     {
@@ -62,8 +66,8 @@ export const Contacts = () => {
           <h1 className='h1'>{lang === 'ru' ? 'Контакты' : 'Контакти'}</h1>
           <div className='contacts-header__items'>
             <div className='contacts-header__item'>
-              <a href='tel:+380682717778'>+38 (068) 271 7778</a>
-              <a href='mailto:luxstampif@gmail.com'>luxstampif@gmail.com</a>
+              <a href='tel:+380631902764'>+38 (063) 190 2764</a>
+              <a href='mailto:luxstamp.ua@gmail.com'>luxstamp.ua@gmail.com</a>
             </div>
             <div className='contacts-header__item'>
               <h4>{lang === 'ru' ? 'График работы' : 'Графік роботи'}:</h4>

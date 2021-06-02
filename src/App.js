@@ -7,6 +7,7 @@ import {Contact} from './pages/Contact'
 
 function App() {
   const location = useLocation()
+
   return (
     <div className='app'>
       <AnimatePresence exitBeforeEnter>
