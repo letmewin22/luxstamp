@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import {CloseIcon} from './CloseIcon'
 
 import './PopUp.scss'
@@ -11,7 +12,7 @@ export const PopUp = props => {
   const classes = ['pop-up', ...props.classes]
   props.visible.isVisible && classes.push('pop-up--active')
 
-  return (
+  const $popUp = (
     <div className={classes.join(' ')}>
       <div className='pop-up__overlay' onClick={close}></div>
       <div className='pop-up__item'>
@@ -22,4 +23,6 @@ export const PopUp = props => {
       </div>
     </div>
   )
+
+  return ReactDOM.createPortal($popUp, document.body)
 }

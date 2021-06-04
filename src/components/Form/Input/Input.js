@@ -1,9 +1,10 @@
 import React, {useState, useRef, useEffect, useCallback} from 'react'
+import InputMask from 'react-input-mask'
 import {required} from '../required'
 
 import './Input.scss'
 
-export const Input = props => {
+export const Input = React.forwardRef((props, ref) => {
   const [error, setError] = useState(false)
   const [value, setValue] = useState('')
   const [isPlaceholder, setIsPlaceholder] = useState(true)
@@ -86,11 +87,23 @@ export const Input = props => {
     } else {
       return (
         <>
-          <input
-            type={props.type}
-            className={`input__field ${error && 'input__field--error'}`}
-            {...inputProps}
-          />
+          {props.type === 'tel' ? (
+            <InputMask
+              mask='+38 (099) 999 99 99'
+              type={props.type}
+              className={`input__field ${error && 'input__field--error'}`}
+              {...inputProps}
+              ref={ref}
+            />
+          ) : (
+            <input
+              type={props.type}
+              className={`input__field ${error && 'input__field--error'}`}
+              {...inputProps}
+              ref={ref}
+            />
+          )}
+
           <span className={placeHolderClasses.join(' ')} ref={placeholder}>
             {props.placeholder}
             {props.required && <span>*</span>}
@@ -123,4 +136,4 @@ export const Input = props => {
       </label>
     </div>
   )
-}
+})

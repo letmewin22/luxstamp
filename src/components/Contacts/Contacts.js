@@ -28,9 +28,8 @@ export const Contacts = () => {
       placeholder: 'Номер телефону',
       classes: 'contacts-form__input',
       required: [
-        {type: 'minlen', minValue: 10},
+        {type: 'minlen', minValue: 12},
         {type: 'maxlen', maxValue: 13},
-        {type: 'phone'},
       ],
       requiredText: 'Некоректний номер',
     },

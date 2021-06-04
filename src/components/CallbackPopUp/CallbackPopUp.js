@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect, useRef, useState} from 'react'
 import {fetchPopup} from '@/api/popup'
 import {Button} from '../Button/Button'
 import {CallbackBtn} from '../CallbackBtn/CallbackBtn'
@@ -12,15 +12,23 @@ import {localizeForm} from '@/utils/localizeForm'
 
 export const CallbackPopUp = () => {
   const [isVisible, setVisibility] = useState(false)
+  const phoneInput = useRef(null)
 
   const {callbackWindow} = useContext(TextContext)
 
   const onSubmit = (data, cb, loader) => {
-    fetchPopup(data, cb, callbackWindow.form.errorMessage, loader)
+    const onSuccess = () => {
+      cb()
+      setVisibility(false)
+    }
+    fetchPopup(data, onSuccess, callbackWindow.form.errorMessage, loader)
   }
 
   const open = () => {
     setVisibility(true)
+    setTimeout(() => {
+      phoneInput.current.getInputDOMNode().focus()
+    }, 200)
   }
 
   const [inputs, setInputs] = useState([
@@ -31,9 +39,8 @@ export const CallbackPopUp = () => {
       placeholder: callbackWindow.form.inputs[0].placeholder,
       classes: 'callback-form__input',
       required: [
-        {type: 'minlen', minValue: 10},
+        {type: 'minlen', minValue: 12},
         {type: 'maxlen', maxValue: 13},
-        {type: 'phone'},
       ],
       requiredText: callbackWindow.form.inputs[0].requiredText,
     },
@@ -63,6 +70,7 @@ export const CallbackPopUp = () => {
               required={input.required && input.required}
               requiredText={input.requiredText && input.requiredText}
               text={input.text && input.text}
+              ref={phoneInput}
             />
           ))}
           <Button

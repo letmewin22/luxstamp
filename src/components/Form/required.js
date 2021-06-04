@@ -8,25 +8,27 @@ export const required = ({el, props}) => {
     }
     const errors = []
 
+    const value = el.value.trim().replaceAll(/\D/gi, '').length
+
     props.required.forEach(v => {
       if (v.type === 'minlen') {
-        const isLessThanMinValue = el.value.trim().length < v.minValue
-        if (isLessThanMinValue && el.value.trim().length > 0) {
+        const isLessThanMinValue = value < v.minValue
+        if (isLessThanMinValue && value > 0) {
           errors.push(true)
         }
       }
       if (v.type === 'maxlen') {
-        const isMoreThanMaxValue = el.value.trim().length > v.maxValue
+        const isMoreThanMaxValue = value > v.maxValue
 
-        if (isMoreThanMaxValue && el.value.trim().length > 0) {
+        if (isMoreThanMaxValue && value > 0) {
           errors.push(true)
         }
       }
       if (v.type === 'phone') {
         const regExp = /\D/
-        const isPhoneValid = !regExp.test(el.value.trim())
+        const isPhoneValid = !regExp.test(value)
 
-        if (!isPhoneValid && el.value.trim().length > 0) {
+        if (!isPhoneValid && value > 0) {
           errors.push(true)
         }
       }
