@@ -5,6 +5,7 @@ import {AnimationWrapper} from './AnimationWrapper'
 import {useCallback} from 'react'
 import LangContext from '@/context/LangContext'
 import TextContext from '@/context/TextContext'
+import {CallbackPopUp} from '@/components/CallbackPopUp/CallbackPopUp'
 
 const resource = useResource()
 
@@ -36,6 +37,7 @@ export const PageLayout = ({children}) => {
         <TextContext.Provider value={languages[lang]}>
           <Navbar langSwitcher={langSwitcher} />
           <AnimationWrapper>{children}</AnimationWrapper>
+          <CallbackPopUp />
         </TextContext.Provider>
       </LangContext.Provider>
     </>

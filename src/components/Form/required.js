@@ -31,10 +31,9 @@ export const required = ({el, props}) => {
         }
       }
     })
-    if (errors.includes(true)) {
-      state = true
-      props.setIsActive && props.setIsActive(false)
-    }
+
+    state = errors.includes(true)
+    props.setIsActive && props.setIsActive(!errors.includes(true))
   }
   return state
 }

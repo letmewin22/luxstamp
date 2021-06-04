@@ -6,6 +6,7 @@ import {Input, Form} from '../Form/'
 import {Button} from '../Button/Button'
 import {fetchContacts} from '@/api/contacts'
 import LangContext from '@/context/LangContext'
+import {Messengers} from '../Messengers/Messengers'
 
 const localizeForm = (inputs, contacts, setInputs) => {
   inputs.forEach((input, i) => {
@@ -36,7 +37,7 @@ export const Contacts = () => {
       classes: 'contacts-form__input',
       required: [
         {type: 'minlen', minValue: 10},
-        {type: 'maxlen', maxValue: 16},
+        {type: 'maxlen', maxValue: 13},
         {type: 'phone'},
       ],
       requiredText: 'Некоректний номер',
@@ -66,8 +67,16 @@ export const Contacts = () => {
           <h1 className='h1'>{lang === 'ru' ? 'Контакты' : 'Контакти'}</h1>
           <div className='contacts-header__items'>
             <div className='contacts-header__item'>
-              <a href='tel:+380631902764'>+38 (063) 190 2764</a>
-              <a href='mailto:luxstamp.ua@gmail.com'>luxstamp.ua@gmail.com</a>
+              <a className='contacts-header__link' href='tel:+380631902764'>
+                +38 (063) 190 2764
+              </a>
+              <a
+                className='contacts-header__link'
+                href='mailto:luxstamp.ua@gmail.com'
+              >
+                luxstamp.ua@gmail.com
+              </a>
+              <Messengers classes={['contacts__messengers']} />
             </div>
             <div className='contacts-header__item'>
               <h4>{lang === 'ru' ? 'График работы' : 'Графік роботи'}:</h4>

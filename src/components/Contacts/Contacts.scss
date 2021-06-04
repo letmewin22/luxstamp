@@ -15,10 +15,11 @@
 }
 
 .contacts-header__item {
-  a, span {
+  .contacts-header__link,
+  span {
     display: block;
     width: fit-content;
-    + a {
+    + .contacts-header__link {
       margin-top: size(16, 12);
     }
     + span {
@@ -30,13 +31,16 @@
   }
   @include media('>=#{$br2}') {
     a {
-      transition: color .3s ease;
+      transition: color 0.3s ease;
       &:hover {
         color: $accent;
       }
     }
-
   }
+}
+
+.contacts__messengers {
+  margin-top: size(20, 16);
 }
 
 .contacts-rep {
@@ -87,10 +91,10 @@
   }
 }
 @include media('<=#{$br2}') {
-.contacts-form__input {
-  grid-column-start: 1;
-  grid-column-end: 3;
-}
+  .contacts-form__input {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
 }
 
 .contacts-form__input--full {

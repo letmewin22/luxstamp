@@ -29,7 +29,11 @@ export const OrderFinalScreen = ({finalPrice, onSubmit}) => {
       id: 'order-phone',
       placeholder: 'Номер телефону',
       classes: 'order-form__input',
-      required: {type: 'minlen', minValue: 10},
+      required: [
+        {type: 'minlen', minValue: 10},
+        {type: 'maxlen', maxValue: 13},
+        {type: 'phone'},
+      ],
       requiredText: 'Некорректний номер',
     },
     {

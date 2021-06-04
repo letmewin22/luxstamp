@@ -1,0 +1,57 @@
+@import '../../scss/helpers/all.scss';
+
+.callback__pop-up {
+  .pop-up__item {
+    width: size(979, 375);
+    text-align: left;
+    align-items: flex-start;
+    padding: 40px size(40, 22);
+  }
+}
+
+.callback__pop-up-h {
+  font-weight: 500;
+  font-size: size(40, 32);
+  line-height: 1.2em;
+  max-width: 620px;
+}
+
+.callback-form {
+  display: flex;
+  width: 90%;
+  align-items: center;
+  margin-top: size(40, 32);
+  @include media('<=#{$br1}') {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+.callback-form__input {
+  flex: 1 1 60%;
+  @include media('<=#{$br1}') {
+    flex: 1 0 100%;
+    width: 100%;
+  }
+}
+
+.callback-form__btn {
+  flex: 1 0 auto;
+  margin-left: 24px;
+  @include media('<=#{$br1}') {
+    margin-left: 0;
+    margin-top: 20px;
+    flex: 1 0 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.callback__pop-up-h-small {
+  margin-top: size(40, 32);
+}
+
+.callback__pop-up-links {
+  margin-top: 16px;
+}

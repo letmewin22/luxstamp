@@ -11,6 +11,7 @@ import './Form.scss'
 import {FormLoader} from '../FormLoader/FormLoader'
 import {PopUp} from '../PopUp/PopUp'
 import TextContext from '@/context/TextContext'
+import {MailIcon} from '../PopUp/MailIcon'
 
 const createStore = (props, inputs) => {
   const children = Array.isArray(props.children[0])
@@ -34,6 +35,7 @@ export const Form = props => {
   const inputs = useRef([])
 
   useEffect(createStore.bind(null, props, inputs), [])
+
   const {sendForm} = useContext(TextContext)
 
   const [values, setValues] = useState(inputs.current)
@@ -75,6 +77,7 @@ export const Form = props => {
 
   const onSubmit = e => {
     e.preventDefault()
+
     if (isActive) {
       props.onSubmit(
         values,
@@ -118,10 +121,15 @@ export const Form = props => {
         {isLoading && <FormLoader />}
       </form>
       <PopUp
-        bigText={sendForm.thankYou.bigText}
-        text={sendForm.thankYou.text}
-        visible={{isSuccess, setIsSuccess}}
-      />
+        classes={['form__pop-up']}
+        visible={{isVisible: isSuccess, setVisibility: setIsSuccess}}
+      >
+        <div className='pop-up__icon'>
+          <MailIcon />
+        </div>
+        <p className='pop-up__big-text'>{sendForm.thankYou.bigText}</p>
+        <p className='pop-up__text'>{sendForm.thankYou.text}</p>
+      </PopUp>
     </>
   )
 }

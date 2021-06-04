@@ -1,0 +1,23 @@
+@import '../../scss/helpers/all.scss';
+
+.messengers {
+  display: flex;
+  align-items: center;
+}
+
+.messengers__link {
+  + .messengers__link {
+    margin-left: size(20, 12);
+  }
+  width: size(48, 36);
+  svg {
+    display: block;
+    width: 100%;
+    transition: fill 0.3s ease;
+    @include media('>#{$br1}') {
+      &:hover {
+        fill: $accent;
+      }
+    }
+  }
+}
