@@ -7,15 +7,7 @@ import {Button} from '../Button/Button'
 import {fetchContacts} from '@/api/contacts'
 import LangContext from '@/context/LangContext'
 import {Messengers} from '../Messengers/Messengers'
-
-const localizeForm = (inputs, contacts, setInputs) => {
-  inputs.forEach((input, i) => {
-    Object.keys(input).map(el => {
-      return contacts.inputs[i][el] && (input[el] = contacts.inputs[i][el])
-    })
-  })
-  setInputs([...inputs])
-}
+import {localizeForm} from '@/utils/localizeForm'
 
 export const Contacts = () => {
   const {footer, contacts} = useContext(TextContext)

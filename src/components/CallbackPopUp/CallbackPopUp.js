@@ -1,38 +1,46 @@
-import React, {useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {fetchPopup} from '@/api/popup'
 import {Button} from '../Button/Button'
 import {CallbackBtn} from '../CallbackBtn/CallbackBtn'
 import {Input, Form} from '../Form'
 import {PopUp} from '../PopUp/PopUp'
 import {Messengers} from '../Messengers/Messengers'
+import TextContext from '@/context/TextContext'
 
 import './CallbackPopUp.scss'
+import {localizeForm} from '@/utils/localizeForm'
 
 export const CallbackPopUp = () => {
   const [isVisible, setVisibility] = useState(false)
 
+  const {callbackWindow} = useContext(TextContext)
+
   const onSubmit = (data, cb, loader) => {
-    fetchPopup(data, cb, 'Что-то пошло не так', loader)
+    fetchPopup(data, cb, callbackWindow.form.errorMessage, loader)
   }
 
   const open = () => {
     setVisibility(true)
   }
 
-  const [inputs] = useState([
+  const [inputs, setInputs] = useState([
     {
       tagName: 'input',
       type: 'tel',
       id: 'phone2',
-      placeholder: 'Номер телефону',
+      placeholder: callbackWindow.form.inputs[0].placeholder,
       classes: 'callback-form__input',
       required: [
         {type: 'minlen', minValue: 10},
         {type: 'maxlen', maxValue: 13},
         {type: 'phone'},
       ],
-      requiredText: 'Некоректний номер',
+      requiredText: callbackWindow.form.inputs[0].requiredText,
     },
+  ])
+
+  useEffect(localizeForm.bind(null, inputs, callbackWindow.form, setInputs), [
+    callbackWindow,
   ])
 
   return (
@@ -42,9 +50,7 @@ export const CallbackPopUp = () => {
         classes={['callback__pop-up']}
         visible={{isVisible, setVisibility}}
       >
-        <h2 className='callback__pop-up-h'>
-          Оставьте свой номер телефона и мы вам перезвоним
-        </h2>
+        <h2 className='callback__pop-up-h'>{callbackWindow.title}</h2>
         <Form classes='callback-form' onSubmit={onSubmit}>
           {inputs.map(input => (
             <Input
@@ -60,13 +66,13 @@ export const CallbackPopUp = () => {
             />
           ))}
           <Button
-            text='Перезвоните мне'
+            text={callbackWindow.form.button}
             classes='callback-form__btn'
             type='submit'
           />
         </Form>
         <h3 className='callback__pop-up-h-small'>
-          или напишите нам в мессенджеры:
+          {callbackWindow.messengerText}
         </h3>
         <Messengers classes={['callback__pop-up-links']} />
       </PopUp>
